@@ -1,13 +1,11 @@
-import './App.css'
-// import Container from '@mui/material/Container';
+import { MusicItem } from './components/MusicItem';
 
-function App() {
-  return (
+const music = new Music();
+
+const App = () => (
     <div className="App">
-      <Button>    
-      </Button>
+      <MusicItem {...music} />
     </div>
-  )
-}
+);
 
-export default App
+export default App;
