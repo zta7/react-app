@@ -19,7 +19,9 @@ export default defineConfig({
         'react', 'mobx', 'mobx-react-lite',
         {
           '@mui/material': [
-            'Avatar', 'Typography', 'Stack', 'Link', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper',
+            'Avatar', 'Typography', 'Stack', 'Link', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Divider',
+            'ListItem', 'ListItemAvatar',
+            'ListItemIcon','ListItemText'
           ],
           '@mui/icons-material': [
             ['FavoriteBorder', 'FavoriteBorderIcon'],
@@ -39,6 +41,11 @@ export default defineConfig({
             ['OpenInFull', 'OpenInFullIcon'],
             ['Circle', 'CircleIcon'],
             ['LooksOne', 'LooksOneIcon'],
+            ['Home', 'HomeIcon'],
+            ['Search', 'SearchIcon'],
+            ['VideoLibrary', 'VideoLibraryIcon'],
+            ['AddCircle', 'AddCircleIcon'],
+            ['Album', 'AlbumIcon']
           ],
         },
       ],

@@ -2,26 +2,19 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable class-methods-use-this */
 
-class PlayMode {
-  len = 2
-  value = 0
-  next() {
-    if (this.value + 1 <= this.len) this.value += 1
-    else this.value = 0
-  }
-}
-
 type TooglePropKeys = {
    isShuffling: boolean
 }
 
-type QueuePropKeys = {
-  playingMode: PlayMode
+type PropKeys = {
+  playingMode: number
+  volume: number
 }
 
 export class Config {
   @observable isShuffling = false
   @observable playingMode = 0
+  @observable volume = 0
 
   @action
   toogle(prop: keyof TooglePropKeys) {
@@ -29,9 +22,9 @@ export class Config {
   }
 
   @action
-  next(prop: keyof QueuePropKeys) {
-    this[prop] += 1
-    console.log(this[prop])
+  set(tuple: [keyof PropKeys, any]) {
+    const [k, v] = tuple
+    this[k] = v
   }
 
   constructor() {

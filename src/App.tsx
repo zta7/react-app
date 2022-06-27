@@ -1,12 +1,13 @@
 import { MusicBar } from './components/MusicBar'
-
+import { LeftDrawer } from './components/LeftDrawer'
 const music = new Music()
 const config = new Config()
 
 const App = () => (
-  <div className="App">
+  <Box sx={{ width: '100vw', height: '100vh', display: 'flex' }}>
+    <LeftDrawer />
     <MusicBar music={music} config={config}/>
-  </div>
+  </Box>
 )
 
 export default App

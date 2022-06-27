@@ -12,7 +12,7 @@ export const MusicItem = observer(({ music }: Props) => {
     <Avatar variant="square">H</Avatar>
     <Stack>
       <Typography variant="subtitle2">
-        { title }
+        <Link href="#" underline="hover" >{ title }</Link>
       </Typography>
       <Stack direction="row" alignItems="center" spacing={0.2}>
         <Avatar sx={{
@@ -21,7 +21,7 @@ export const MusicItem = observer(({ music }: Props) => {
         >E</Avatar>
         {
           artists.map((e, i, arr) => (
-            <Typography key={e} variant="caption">
+            <Typography key={e} variant="caption" fontSize={10}>
               <Link href="#" underline="hover" >{ e }</Link>
               {
                 i !== arr.length - 1

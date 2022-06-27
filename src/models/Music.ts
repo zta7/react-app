@@ -24,10 +24,3 @@ export class Music {
     makeObservable(this)
   }
 }
-
-// export class MusicList {
-//   @observable list = []
-//   // @computed get unfinishedTodoCount() {
-//   //   return 1
-//   // }
-// }
