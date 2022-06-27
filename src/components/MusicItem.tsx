@@ -1,12 +1,42 @@
-import { Music } from "../models/Music"
+import { Music } from '../models/Music'
 
-export const MusicItem = ({ title }: Music) => {
-  return (
-    <Stack direction="row" alignItems="center" spacing={2}>
-      <Avatar variant='square'>H</Avatar>
-      <Typography variant="caption">
-        {title}
-      </Typography>
-    </Stack>
-  )
+interface Props {
+  music: Music
 }
+
+export const MusicItem = observer(({ music }: Props) => {
+  const {
+    title, artists, isLiked,
+  } = music
+  return <Stack direction="row" alignItems="center" spacing={2}>
+    <Avatar variant="square">H</Avatar>
+    <Stack>
+      <Typography variant="subtitle2">
+        { title }
+      </Typography>
+      <Stack direction="row" alignItems="center" spacing={0.2}>
+        <Avatar sx={{
+          width: 14, height: 14, fontSize: '12px', mr: 0.5,
+        }} variant="square"
+        >E</Avatar>
+        {
+          artists.map((e, i, arr) => (
+            <Typography key={e} variant="caption">
+              <Link href="#" underline="hover" >{ e }</Link>
+              {
+                i !== arr.length - 1
+                && <span>,</span>
+              }
+            </Typography>
+          ))
+        }
+
+      </Stack>
+    </Stack>
+    <div onClick={() => music.toogle('isLiked')}>
+      {
+        isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/>
+      }
+    </div>
+  </Stack>
+})

@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [
     react(),
-    AutoImport({ 
+    AutoImport({
       include: [
         /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
       ],
@@ -19,11 +19,30 @@ export default defineConfig({
         'react', 'mobx', 'mobx-react-lite',
         {
           '@mui/material': [
-            'Avatar', 'Typography', 'Stack'
-          ]
-        }
+            'Avatar', 'Typography', 'Stack', 'Link', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper',
+          ],
+          '@mui/icons-material': [
+            ['FavoriteBorder', 'FavoriteBorderIcon'],
+            ['Favorite', 'FavoriteIcon'],
+            ['SkipNext', 'SkipNextIcon'],
+            ['SkipPrevious', 'SkipPreviousIcon'],
+            ['Pause', 'PauseIcon'],
+            ['PlayArrow', 'PlayArrowIcon'],
+            ['Shuffle', 'ShuffleIcon'],
+            ['Loop', 'LoopIcon'],
+            ['Mic', 'MicIcon'],
+            ['QueueMusic', 'QueueMusicIcon'],
+            ['Cast', 'CastIcon'],
+            ['VolumeOff', 'VolumeOffIcon'],
+            ['VolumeUp', 'VolumeUpIcon'],
+            ['VolumeDown', 'VolumeDownIcon'],
+            ['OpenInFull', 'OpenInFullIcon'],
+            ['Circle', 'CircleIcon'],
+            ['LooksOne', 'LooksOneIcon'],
+          ],
+        },
       ],
-      dirs: ['./src/models/']
-     })
-  ]
+      dirs: ['./src/models/'],
+    }),
+  ],
 })

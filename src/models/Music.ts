@@ -1,22 +1,33 @@
+interface TooglePropKeys {
+  readonly isLiked: string
+  readonly isPlaying: string
+}
+
 export class Music {
-  id = Math.random();
+  id = Math.random()
   title = 'Blank Account'
   album = 'Issa Album'
-  artists = ['21 Savage']
+  artists = ['21 Savage', 'adsasd']
+  during = 100000
+  currentTime = 1000
+  finished = false
 
-  @observable during = 50000
-  @observable finished = false
+  @observable isLiked = false
+  @observable isPlaying = false
+
+  @action
+  toogle(prop: keyof TooglePropKeys) {
+    this[prop] = !this[prop]
+  }
 
   constructor() {
-    setInterval(() => {
-      this.id += 1;
-    }, 1000);
+    makeObservable(this)
   }
 }
 
-export class MusicList {
-  @observable list = []
-  @computed get unfinishedTodoCount() {
-    return 1
-  }
-}
+// export class MusicList {
+//   @observable list = []
+//   // @computed get unfinishedTodoCount() {
+//   //   return 1
+//   // }
+// }
