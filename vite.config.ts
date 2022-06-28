@@ -16,12 +16,11 @@ export default defineConfig({
       },
       dts: './src/auto-imports.d.ts',
       imports: [
-        'react', 'mobx', 'mobx-react-lite',
+        'react', 'mobx', 'mobx-react-lite', 'react-router-dom',
         {
           '@mui/material': [
-            'Avatar', 'Typography', 'Stack', 'Link', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Divider',
-            'ListItem', 'ListItemAvatar',
-            'ListItemIcon','ListItemText'
+            'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Divider', 'Button',
+            'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon','ListItemText',
           ],
           '@mui/icons-material': [
             ['FavoriteBorder', 'FavoriteBorderIcon'],
@@ -45,7 +44,8 @@ export default defineConfig({
             ['Search', 'SearchIcon'],
             ['VideoLibrary', 'VideoLibraryIcon'],
             ['AddCircle', 'AddCircleIcon'],
-            ['Album', 'AlbumIcon']
+            ['Album', 'AlbumIcon'],
+            ['Downloading', 'DownloadingIcon']
           ],
         },
       ],
