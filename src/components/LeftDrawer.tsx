@@ -58,14 +58,12 @@ export const LeftDrawer = () => {
   <List sx={{ ...listSx }} dense>
     {
       list1.map(item => {
-        return <NavLink to='/hhh'>
-        <ListItemButton key={ item.id } disableRipple>
-          <ListItemIcon sx={{ minWidth: 40 }}>
-            { item.icon }
-          </ListItemIcon>
-          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx  }} />
+        return <ListItemButton key={ item.id } disableRipple>
+            <ListItemIcon sx={{ minWidth: 40 }}>
+              { item.icon }
+            </ListItemIcon>
+            <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx  }} />
         </ListItemButton>
-        </NavLink>
       })
     }
     <Box sx={{ height: 20 }}></Box>
