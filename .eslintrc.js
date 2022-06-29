@@ -12,8 +12,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
-      jsx: true,
-      // tsx: true,
+      // jsx: true,
+      tsx: true,
     },
     ecmaVersion: 'latest',
     sourceType: 'module',
@@ -43,7 +43,7 @@ module.exports = {
     'react/display-name': 0,
     'react/forbid-prop-types': 0,
     'react/jsx-boolean-value': 1,
-    'react/jsx-closing-bracket-location': 1,
+    'react/jsx-closing-bracket-location': [1, 'after-props'],
     'react/jsx-curly-spacing': 1,
     'react/jsx-handler-names': 1,
     'react/jsx-indent-props': 1,

@@ -43,7 +43,7 @@ export const HomePage = () => {
       ],
     },
   ]
-  return <Container fixed maxWidth={false}>
+  return <Container maxWidth={false} sx={{ overflowY: 'scroll' }}>
     <div>
       <CardHeader title="Good Afternoon" sx={{ pb: 0 }}/>
       <CardContent>
@@ -54,15 +54,13 @@ export const HomePage = () => {
                 <CardMedia
                     component="img"
                     sx={{ width: 90 }}
-                    image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"
-                />
+                    image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"/>
                 <Typography className={'ellipsis-2-lines break-all'} sx={{ px: 1, flexGrow: 1 }} >
                   { item.title }
                 </Typography>
                 <PlayArrowIcon sx={{
                   color: 'error.main', mr: 1, borderRadius: 5,
-                }} fontSize="large"
-                />
+                }} fontSize="large"/>
               </Stack>
             </Grid>)
           }
@@ -79,9 +77,7 @@ export const HomePage = () => {
                 <CardMedia
                     component="img"
                     sx={{ aspectRatio: '1/1', mb: 1 }}
-                    image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"
-                />
-
+                    image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"/>
                 <Typography className={'ellipsis'} variant="button">
                   { item.title }
                 </Typography>
@@ -105,8 +101,7 @@ export const HomePage = () => {
                   m: 0,
                   alignSelf: 'end',
                 },
-              }} action={<MuiLink underline="hover" component={NavLink} to="/fff">View All</MuiLink>}
-          />
+              }} action={<MuiLink underline="hover" component={NavLink} to="/fff">View All</MuiLink>}/>
           <CardContent>
             <Grid container spacing={2}>
               {
@@ -115,9 +110,7 @@ export const HomePage = () => {
                   <CardMedia
                       component="img"
                       sx={{ aspectRatio: '1/1', mb: 1 }}
-                      image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"
-                  />
-
+                      image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"/>
                   <Typography className={'ellipsis'} variant="button">
                     { item.title }
                   </Typography>
