@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.ellipsis-2-lines,
+.ellipsis-3-lines {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+.ellipsis-2-lines {
+  -webkit-line-clamp: 2;
+}
+.ellipsis-3-lines {
+  -webkit-line-clamp: 3;
+}
+
+.break-all {
+  word-break: break-all;
+}

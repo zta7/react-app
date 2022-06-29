@@ -1,42 +1,45 @@
-import { RouterProps } from "react-router";
+// import { RouterProps } from 'react-router'
 
 // const list1 = []
+const activeStyle = {
+  textDecoration: 'underline',
+}
+
 const list1 = [
-  // { icon: <HomeIcon />, label: 'Home', id: 'a1', to: '/home', link: (props: any) => {
-  //   const { to } = props
-  //   console.log(to)
-  //   return useMemo(
-  //     () =>
-  //       forwardRef<HTMLAnchorElement, Omit<any, 'to'>>(function Link(
-  //         LinkProps,
-  //         ref,
-  //       ) {
-  //         return <NavLink ref={ref} to={to} {...LinkProps } />;
-  //       }),
-  //     [to],
-  //   );
-  // }},
-  { icon: <SearchIcon />, label: 'Search', id: 'a2', link: <NavLink to='/home2' /> },
-  // { icon: <VideoLibraryIcon />, label: 'Your Library', id: 'a3', link: (props: any) => <NavLink to='/home3' {...props}/> }
+  {
+    icon: <HomeIcon />, label: 'Home', id: 'a1', link: forwardRef((props: any, ref) => <NavLink to="/home1" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
+  {
+    icon: <SearchIcon />, label: 'Search', id: 'a2', link: forwardRef((props: any, ref) => <NavLink to="/home2" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
+  {
+    icon: <VideoLibraryIcon />, label: 'Your Library', id: 'a3', link: forwardRef((props: any, ref) => <NavLink to="/home3" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
 ]
 const list2 = [
-  { icon: <AddCircleIcon/>, label: 'Create Playlist', id: 'b1', },
-  { icon: <FavoriteIcon/>, label: 'Liked Songs', id: 'b2' },
-  { icon: <AlbumIcon/>, label: 'Your Episode', id: 'b3' }
+  {
+    icon: <AddCircleIcon/>, label: 'Create Playlist', id: 'b1', link: forwardRef((props: any, ref) => <NavLink to="/home4" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
+  {
+    icon: <FavoriteIcon/>, label: 'Liked Songs', id: 'b2', link: forwardRef((props: any, ref) => <NavLink to="/home5" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
+  {
+    icon: <AlbumIcon/>, label: 'Your Episode', id: 'b3', link: forwardRef((props: any, ref) => <NavLink to="/home6" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+  },
 ]
 
 const list3 = [
-  {  label: '2021年你的最爱歌曲', id: 'c1'  },
-  {  label: 'Asmr Licking', id: 'c2'},
-  {  label: 'Long Long Long Long Long Long Long Long Long Long Long Long', id: 'c3' }
+  { label: '2021年你的最爱歌曲', id: 'c1', link: forwardRef((props: any, ref) => <NavLink to="/home7" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'Asmr Licking', id: 'c2', link: forwardRef((props: any, ref) => <NavLink to="/home8" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'Long Long Long Long Long Long Long Long Long Long Long Long', id: 'c3', link: forwardRef((props: any, ref) => <NavLink to="/home9" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
 ]
 
-const itemButtonSx = {
-  '&:hover': { 
-    background: 'none',
-    color: 'grey'
-  } 
-}
+// const itemButtonSx = {
+//   '&:hover': {
+//     background: 'none',
+//     color: 'grey',
+//   },
+// }
 
 const listSx = {
   minWidth: 50,
@@ -45,48 +48,40 @@ const listSx = {
 }
 
 const textSx = {
-  fontWeight: 700, 
+  fontWeight: 700,
   fontSize: 14,
   overflow: 'hidden',
   // whiteSpace: 'nowrap',
   noWrap: true,
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 }
 
-export const LeftDrawer = () => {
-  return <Stack direction="row">
+export const LeftDrawer = () => <Stack direction="row">
   <List sx={{ ...listSx }} dense>
     {
-      list1.map(item => {
-        return <ListItemButton key={ item.id } disableRipple>
-            <ListItemIcon sx={{ minWidth: 40 }}>
-              { item.icon }
-            </ListItemIcon>
-            <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx  }} />
-        </ListItemButton>
-      })
+      list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+        <ListItemIcon sx={{ minWidth: 40 }}>
+          { item.icon }
+        </ListItemIcon>
+        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+      </ListItemButton>)
     }
     <Box sx={{ height: 20 }}></Box>
     {
-      list2.map(item => {
-        return <ListItemButton key={ item.id } disableRipple>
-          <ListItemIcon sx={{ minWidth: 40 }}>
-            { item.icon }
-          </ListItemIcon>
-          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }}/>
-          {/* <DownloadingIcon sx={{ fontSize: 16 }}/> */}
-        </ListItemButton>
-      })
+      list2.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+        <ListItemIcon sx={{ minWidth: 40 }}>
+          { item.icon }
+        </ListItemIcon>
+        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }}/>
+        {/* <DownloadingIcon sx={{ fontSize: 16 }}/> */}
+      </ListItemButton>)
     }
-    <Divider variant='middle'/>
+    <Divider variant="middle"/>
     {
-      list3.map(item => {
-        return <ListItemButton key={ item.id } disableRipple>
-          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx  }} />
-        </ListItemButton>
-      })
+      list3.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+      </ListItemButton>)
     }
   </List>
-  <Divider orientation='vertical' flexItem/>
+  <Divider orientation="vertical" flexItem/>
 </Stack>
-}
