@@ -22,6 +22,7 @@ export default defineConfig({
             'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Divider', 'Button', 'Grid',
             'Card', 'CardContent', 'CardActions', 'CardHeader', 'CardMedia', 'CardActionArea',
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',
+            'Fade',
             ['Link', 'MuiLink'],
           ],
           '@mui/icons-material': [

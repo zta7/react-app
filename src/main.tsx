@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
-import './index.css'
 import { EpisodePage } from './pages/EpisodePage'
 import { HomePage } from './pages/HomePage'
 import { LibraryPage } from './pages/LibraryPage'
@@ -10,6 +9,10 @@ import { LikedPage } from './pages/LikedPage'
 import { PlayListPage } from './pages/PlayListPage'
 import { SearchPage } from './pages/SearchPage'
 // import Invoices from './routes/invoices'
+
+// css
+import './index.css'
+// import 'animate.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

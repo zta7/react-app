@@ -1,13 +1,16 @@
+import { PlayListCard } from '../components/PlayListCard'
+
+/* eslint-disable max-len */
 export const HomePage = () => {
   const list1 = [
-    { id: '1', imgSrc: '', title: 'Your Liked' },
-    { id: '2', imgSrc: '', title: 'Justin Bieber' },
-    { id: '3', imgSrc: '', title: 'Top 50 - Universe' },
-    { id: '4', imgSrc: '', title: 'Post Malone' },
-    { id: '5', imgSrc: '', title: 'Long LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong' },
-    { id: '6', imgSrc: '', title: 'Your most loved in 2021' },
-    { id: '7', imgSrc: '', title: 'Excise' },
-    { id: '8', imgSrc: '', title: 'Malamla' },
+    new PlayList({ title: 'Your Liked' }),
+    new PlayList({ title: 'Justin Bieber' }),
+    new PlayList({ title: 'Top 50 - Universe' }),
+    new PlayList({ title: 'Post Malone' }),
+    new PlayList({ title: 'Long LongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong' }),
+    new PlayList({ title: 'Your most loved in 2021' }),
+    new PlayList({ title: 'Excise' }),
+    new PlayList({ title: 'Malamla' }),
   ]
   const list2 = [
     {
@@ -42,6 +45,55 @@ export const HomePage = () => {
         { path: '7', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
       ],
     },
+    {
+      path: '2',
+      title: 'Never Discovered',
+      children: [
+        { path: '2', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '3', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '4', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '5', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '6', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '7', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+      ],
+    },
+    {
+      path: '3',
+      title: 'Recent Played',
+      children: [
+        { path: '2', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '3', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '4', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '5', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '6', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '7', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+      ],
+    },
+    {
+      path: '4',
+      title: 'Hot Played',
+      children: [
+        { path: '2', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '3', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '4', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '5', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '6', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '7', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+      ],
+    },
+    {
+      path: '5',
+      title: 'More You Loved',
+      subtitle: 'Listen More You Loved !',
+      children: [
+        { path: '2', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '3', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '4', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '5', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+        { path: '6', title: 'Top 50 - Universe', subtitle: 'Daily updates of your current hottest tracks - Universe' },
+        { path: '7', title: 'Mood Booster', subtitle: "Get Happy with today's does of feel-good songs!" },
+      ],
+    },
   ]
   return <Container maxWidth={false} sx={{ overflowY: 'scroll' }}>
     <div>
@@ -49,19 +101,8 @@ export const HomePage = () => {
       <CardContent>
         <Grid container spacing={2}>
           {
-            list1.map((item) => <Grid item xs={3} sx={{ height: 90 }} key={item.id}>
-              <Stack direction="row" alignItems="center" justifyContent="space-between" component={Card}>
-                <CardMedia
-                    component="img"
-                    sx={{ width: 90 }}
-                    image="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg"/>
-                <Typography className={'ellipsis-2-lines break-all'} sx={{ px: 1, flexGrow: 1 }} >
-                  { item.title }
-                </Typography>
-                <PlayArrowIcon sx={{
-                  color: 'error.main', mr: 1, borderRadius: 5,
-                }} fontSize="large"/>
-              </Stack>
+            list1.map((item) => <Grid item sm={12} md={6} lg={3} sx={{ height: 90 }} key={item.id}>
+              <PlayListCard playList={item}/>
             </Grid>)
           }
         </Grid>
@@ -72,7 +113,8 @@ export const HomePage = () => {
       <CardContent>
         <Grid container spacing={2}>
           {
-            list2.map((item) => <Grid item xs={2} key={item.id} sx={{ ma: 2 }}>
+            list2.map((item) => <Grid
+                item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ ma: 2 }}>
               <Stack component={Card} sx={{ p: 2 }}>
                 <CardMedia
                     component="img"
@@ -92,20 +134,22 @@ export const HomePage = () => {
     </div>
     {
       list3.map((e) => {
-        console.log(e)
+        const CardHeaderSx = {
+          pb: 0,
+          '& .MuiCardHeader-action': {
+            m: 0,
+            alignSelf: 'end',
+          },
+        }
+        const TitleLink = (title: string) => <MuiLink href="#" underline="hover" component={NavLink} to="/fff">{title}</MuiLink>
         return <div key={e.path}>
           <CardHeader
-              title="Your Entertainment" sx={{
-                pb: 0,
-                '& .MuiCardHeader-action': {
-                  m: 0,
-                  alignSelf: 'end',
-                },
-              }} action={<MuiLink underline="hover" component={NavLink} to="/fff">View All</MuiLink>}/>
+              title={TitleLink(e.title)} subheader={e.subtitle} sx={CardHeaderSx} action={TitleLink('View All')}/>
           <CardContent>
             <Grid container spacing={2}>
               {
-              e.children.map((item) => <Grid item xs={2} key={item.path} sx={{ ma: 2 }}>
+              e.children.map((item) => <Grid
+                  item xs={12} sm={6} md={4} lg={2} key={item.path} sx={{ ma: 2 }}>
                 <Stack component={Card} sx={{ p: 2 }}>
                   <CardMedia
                       component="img"
@@ -114,7 +158,7 @@ export const HomePage = () => {
                   <Typography className={'ellipsis'} variant="button">
                     { item.title }
                   </Typography>
-                  <Typography className={'ellipsis'} variant="caption">
+                  <Typography className={'ellipsis-2-lines'} variant="caption">
                     { item.subtitle }
                   </Typography>
                 </Stack>
