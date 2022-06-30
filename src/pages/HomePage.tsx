@@ -101,7 +101,7 @@ export const HomePage = () => {
       <CardContent>
         <Grid container spacing={2}>
           {
-            list1.map((item) => <Grid item sm={12} md={6} lg={3} sx={{ height: 90 }} key={item.id}>
+            list1.map((item) => <Grid item sm={12} md={6} lg={3} key={item.id}>
               <PlayListCard playList={item}/>
             </Grid>)
           }
