@@ -19,7 +19,8 @@ export default defineConfig({
         'react', 'mobx', 'mobx-react-lite', 'react-router-dom',
         {
           '@mui/material': [
-            'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Divider', 'Button', 'Grid',
+            'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Toolbar', 'Divider', 'Button', 'Grid',
+            'TextField', 'InputAdornment',
             'Card', 'CardContent', 'CardActions', 'CardHeader', 'CardMedia', 'CardActionArea',
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',
             'Fade',
@@ -49,6 +50,10 @@ export default defineConfig({
             ['AddCircle', 'AddCircleIcon'],
             ['Album', 'AlbumIcon'],
             ['Downloading', 'DownloadingIcon'],
+            ['PlayCircle', 'PlayCircleIcon'],
+            ['PauseCircle', 'PauseCircleIcon'],
+            ['PlayCircleFilled', 'PlayCircleFilledIcon'],
+            ['Close', 'CloseIcon'],
           ],
         },
       ],

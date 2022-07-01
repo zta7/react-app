@@ -1,6 +1,4 @@
-// interface Play
-
-export class PlayList {
+export class GenricList {
   id = Math.random()
   title = ''
   subtitle = ''
@@ -18,7 +16,7 @@ export class PlayList {
     this.isPlaying = false
   }
 
-  constructor(fields: Partial<PlayList>) {
+  constructor(fields: Partial<GenricList>) {
     Object.assign(this, fields)
     makeObservable(this)
   }
