@@ -68,7 +68,8 @@ export const MusicBar = observer(({ music, config }: Props) => {
         <CastIcon />
         <Stack direction="row" spacing={0.5} alignItems="center">
           <VolumeDownIcon/>
-          <Slider size="small" value={volume} onChange={(evt, v: number) => config.set(['volume', v])} min={0} max={100} sx={{ ...sliderSx, width: '120px' }}/>
+          <Slider size="small" value={volume} onChange={(evt, v) => config.set(['volume', v])}
+              min={0} max={100} sx={{ ...sliderSx, width: '120px' }}/>
         </Stack>
         <OpenInFullIcon />
       </Stack>

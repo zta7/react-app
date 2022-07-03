@@ -12,22 +12,20 @@ import { SearchPage } from './pages/SearchPage'
 
 // css
 import './index.css'
+import 'hover.css'
 // import 'animate.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <App /> */}
       <Routes>
         <Route path="/" element={<App />}>
           <Route path="home1" element={<HomePage />} />
           <Route path="home2" element={<SearchPage />} />
           <Route path="home3" element={<LibraryPage />} />
-
           <Route path="home4" element={<PlayListPage />} />
           <Route path="home5" element={<LikedPage />} />
           <Route path="home6" element={<EpisodePage />} />
-
         </Route>
       </Routes>
     </BrowserRouter>

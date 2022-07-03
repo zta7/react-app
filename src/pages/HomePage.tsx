@@ -1,4 +1,4 @@
-import { ListCard } from '../components/ListCard'
+import { ListCardContent } from '../components/ListCardContent'
 
 /* eslint-disable max-len */
 export const HomePage = () => {
@@ -84,55 +84,12 @@ export const HomePage = () => {
     },
   ]
   return <>
-    <div>
-      <CardHeader title="Good Afternoon" sx={{ pb: 0 }}/>
-      <CardContent>
-        <Grid container spacing={2}>
-          {
-            list1.map((item) => <Grid item sm={12} md={6} lg={3} key={item.id}>
-              <ListCard item={item}/>
-            </Grid>)
-          }
-        </Grid>
-      </CardContent>
-    </div>
-    <div>
-      <CardHeader title="Your Entertainment" sx={{ pb: 0 }}/>
-      <CardContent>
-        <Grid container spacing={2}>
-          {
-            list2.map((item) => <Grid
-                item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ ma: 2 }}>
-              <ListCard item={item} direction="column"/>
-            </Grid>)
-          }
-        </Grid>
-      </CardContent>
-    </div>
+    <ListCardContent title="Good Afternoon" items={list1} />
+    <ListCardContent title="Your Entertainment" items={list2} direction="column" />
     {
       list3.map((e) => {
-        const CardHeaderSx = {
-          pb: 0,
-          '& .MuiCardHeader-action': {
-            m: 0,
-            alignSelf: 'end',
-          },
-        }
         const TitleLink = (title: string) => <MuiLink href="#" underline="hover" component={NavLink} to="/fff">{title}</MuiLink>
-        return <div key={e.path}>
-          <CardHeader
-              title={TitleLink(e.title)} subheader={e.subtitle} sx={CardHeaderSx} action={TitleLink('View All')}/>
-          <CardContent>
-            <Grid container spacing={2}>
-              {
-                e.children.map((item) => <Grid
-                    item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ ma: 2 }}>
-                  <ListCard item={item} direction="column"/>
-                </Grid>)
-              }
-            </Grid>
-          </CardContent>
-        </div>
+        return <ListCardContent key={e.path} title={TitleLink(e.title)} subtitle={e.subtitle} items={e.children} direction="column"/>
       })
     }
   </>

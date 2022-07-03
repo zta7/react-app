@@ -34,17 +34,12 @@ const list3 = [
   { label: 'Long Long Long Long Long Long Long Long Long Long Long Long', id: 'c3', link: forwardRef((props: any, ref) => <NavLink to="/home9" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
 ]
 
-// const itemButtonSx = {
-//   '&:hover': {
-//     background: 'none',
-//     color: 'grey',
-//   },
-// }
-
 const listSx = {
   minWidth: 50,
   maxWidth: 200,
   p: 0,
+  display: 'flex',
+  flexFlow: 'column nowrap',
 }
 
 const textSx = {
@@ -58,30 +53,34 @@ const textSx = {
 
 export const LeftDrawer = () => <Stack direction="row">
   <List sx={{ ...listSx }} dense>
-    {
-      list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
-        <ListItemIcon sx={{ minWidth: 40 }}>
-          { item.icon }
-        </ListItemIcon>
-        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
-      </ListItemButton>)
-    }
-    <Box sx={{ height: 20 }}></Box>
-    {
-      list2.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
-        <ListItemIcon sx={{ minWidth: 40 }}>
-          { item.icon }
-        </ListItemIcon>
-        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }}/>
-        {/* <DownloadingIcon sx={{ fontSize: 16 }}/> */}
-      </ListItemButton>)
-    }
+    <Box>
+      {
+        list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+          <ListItemIcon sx={{ minWidth: 40 }}>
+            { item.icon }
+          </ListItemIcon>
+          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+        </ListItemButton>)
+      }
+      <Box sx={{ height: 20 }}></Box>
+      {
+        list2.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+          <ListItemIcon sx={{ minWidth: 40 }}>
+            { item.icon }
+          </ListItemIcon>
+          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }}/>
+          {/* <DownloadingIcon sx={{ fontSize: 16 }}/> */}
+        </ListItemButton>)
+      }
+    </Box>
     <Divider variant="middle"/>
-    {
+    <Box sx={{ overflowY: 'scroll', flexGrow: 1 }}>
+      {
       list3.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
         <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
       </ListItemButton>)
-    }
+      }
+    </Box>
   </List>
   <Divider orientation="vertical" flexItem/>
 </Stack>

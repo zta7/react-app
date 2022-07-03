@@ -20,6 +20,7 @@ export default defineConfig({
         {
           '@mui/material': [
             'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Toolbar', 'Divider', 'Button', 'Grid',
+            'Menu', 'MenuItem', 'ButtonBase',
             'TextField', 'InputAdornment',
             'Card', 'CardContent', 'CardActions', 'CardHeader', 'CardMedia', 'CardActionArea',
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',
@@ -54,6 +55,9 @@ export default defineConfig({
             ['PauseCircle', 'PauseCircleIcon'],
             ['PlayCircleFilled', 'PlayCircleFilledIcon'],
             ['Close', 'CloseIcon'],
+            ['ArrowDropDown', 'ArrowDropDownIcon'],
+            ['ArrowDropUp', 'ArrowDropUpIcon'],
+            ['OpenInNew', 'OpenInNewIcon'],
           ],
         },
       ],
