@@ -93,18 +93,25 @@ export const HomePage = () => {
         </Grid>)
       }
     </ListCardContent>
-    <ListCardContent title="Your Entertainment">
+    <ListCardContent title="Your Entertainment" action={<MuiLink underline="hover">View More</MuiLink>}>
       {
-        list2.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id}>
+        list2.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ display: 'flex' }}>
           <VerticalCard item={item} />
         </Grid>)
       }
     </ListCardContent>
-    {/* {
+    {
       list3.map((e) => {
         const TitleLink = (title: string) => <MuiLink href="#" underline="hover" component={NavLink} to="/fff">{title}</MuiLink>
-        return <ListCardContent key={e.path} title={TitleLink(e.title)} subtitle={e.subtitle} items={e.children} direction="column"/>
+        return <ListCardContent key={e.path} title={TitleLink(e.title)} subtitle={e.subtitle} action={<MuiLink underline="hover">View More</MuiLink>}>
+          {
+            e.children.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ display: 'flex' }}>
+              <VerticalCard item={item} />
+            </Grid>)
+          }
+
+        </ListCardContent>
       })
-    } */}
+    }
   </>
 }

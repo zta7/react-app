@@ -23,6 +23,7 @@ declare global {
   const CloseIcon: typeof import('@mui/icons-material')['Close']
   const Config: typeof import('./models/Config')['Config']
   const Container: typeof import('@mui/material')['Container']
+  const Cover: typeof import('./models/Cover')['Cover']
   const Divider: typeof import('@mui/material')['Divider']
   const DownloadingIcon: typeof import('@mui/icons-material')['Downloading']
   const Drawer: typeof import('@mui/material')['Drawer']

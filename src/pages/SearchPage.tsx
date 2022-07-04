@@ -1,3 +1,5 @@
+import { CoverCard } from '../components/Card/CoverCard'
+import { VerticalCard } from '../components/Card/VerticalCard'
 import { ListCardContent } from '../components/ListCardContent'
 
 const list1 = [
@@ -9,9 +11,59 @@ const list1 = [
   new GenricList({ title: 'Your most loved in 2021' }),
 ]
 
+const list2 = [
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+]
+
+const list3 = [
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+  new Cover({ title: '流行乐' }),
+  new Cover({ title: '嘻哈' }),
+  new Cover({ title: '摇滚' }),
+  new Cover({ title: 'R&B' }),
+]
+
 export const SearchPage = () => {
   console.log('SearchPage')
   return <>
-    <ListCardContent title={<MuiLink underline="hover">Recent Search</MuiLink>} direction="column" items={list1} />
+    <ListCardContent title="Your Entertainment" action={<MuiLink underline="hover">View More</MuiLink>}>
+      {
+        list1.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ display: 'flex' }}>
+          <VerticalCard item={item} />
+        </Grid>)
+      }
+    </ListCardContent>
+    <ListCardContent title="你最喜欢的风格">
+      {
+        list2.map((item) => <Grid item xs={4} key={item.id} sx={{ display: 'flex' }}>
+          <CoverCard item={item} aspectRatio="2/1" />
+        </Grid>)
+      }
+    </ListCardContent>
+    <ListCardContent title="浏览全部">
+      {
+        list3.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id}>
+          <CoverCard item={item}/>
+        </Grid>)
+      }
+    </ListCardContent>
   </>
 }

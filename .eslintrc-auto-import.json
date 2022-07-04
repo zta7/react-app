@@ -22,6 +22,7 @@
     "CloseIcon": true,
     "Config": true,
     "Container": true,
+    "Cover": true,
     "Divider": true,
     "DownloadingIcon": true,
     "Drawer": true,
