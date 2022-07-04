@@ -1,3 +1,5 @@
+import { HorizontalCard } from '../components/Card/HorizontalCard'
+import { VerticalCard } from '../components/Card/VerticalCard'
 import { ListCardContent } from '../components/ListCardContent'
 
 /* eslint-disable max-len */
@@ -84,13 +86,25 @@ export const HomePage = () => {
     },
   ]
   return <>
-    <ListCardContent title="Good Afternoon" items={list1} />
-    <ListCardContent title="Your Entertainment" items={list2} direction="column" />
-    {
+    <ListCardContent title="Good Afternoon" >
+      {
+        list1.map((item) => <Grid item xs={12} md={6} lg={3} key={item.id}>
+          <HorizontalCard item={item}/>
+        </Grid>)
+      }
+    </ListCardContent>
+    <ListCardContent title="Your Entertainment">
+      {
+        list2.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id}>
+          <VerticalCard item={item} />
+        </Grid>)
+      }
+    </ListCardContent>
+    {/* {
       list3.map((e) => {
         const TitleLink = (title: string) => <MuiLink href="#" underline="hover" component={NavLink} to="/fff">{title}</MuiLink>
         return <ListCardContent key={e.path} title={TitleLink(e.title)} subtitle={e.subtitle} items={e.children} direction="column"/>
       })
-    }
+    } */}
   </>
 }

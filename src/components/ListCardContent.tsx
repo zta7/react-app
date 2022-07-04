@@ -1,6 +1,5 @@
 import React, { ReactElement } from 'react'
-import { GenricList } from '../models/GenricList'
-import { ListCard } from './ListCard'
+// import { ListCard } from './ListCard'
 
 const CardHeaderSx = {
   pb: 0,
@@ -15,8 +14,9 @@ type Direction = 'row' | 'column'
 type Props = {
   title: string | ReactElement,
   subtitle?: string,
-  items?: GenricList[],
-  direction?: Direction
+  action?: string | ReactElement,
+  direction?: Direction,
+  children: any
 }
 
 const GirdItemProps = (direction: Direction) => {
@@ -39,24 +39,25 @@ const GirdItemProps = (direction: Direction) => {
 }
 
 export const ListCardContent: React.FC<Props> = ({
-  title, subtitle = '', items = [], direction = 'row',
+  title, subtitle = '', action, children,
 }) => {
   console.log(1)
 
-  // 默认都是6个
-  const itemsLength = items.length
-  const showItems = itemsLength <= 6 ? items : items.slice(0, 6)
-  const action = itemsLength <= 6 ? undefined : <MuiLink underline="hover">123</MuiLink>
+  // // 默认都是6个
+  // const itemsLength = items.length
+  // const showItems = itemsLength <= 6 ? items : items.slice(0, 6)
+  // const action = itemsLength <= 6 ? undefined : <MuiLink underline="hover">123</MuiLink>
 
   return <Box>
     <CardHeader title={title} subtitle={subtitle} sx={CardHeaderSx} action={action}/>
     <CardContent>
       <Grid container spacing={2}>
-        {
+        { children }
+        {/* {
           showItems.map((item) => <Grid item {...GirdItemProps(direction)} key={item.id}>
             <ListCard item={item} direction={direction} />
           </Grid>)
-        }
+        } */}
       </Grid>
     </CardContent>
   </Box>
