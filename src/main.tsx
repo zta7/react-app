@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
+import ElementQueries from 'css-element-queries/src/ElementQueries'
 import App from './App'
 import { EpisodePage } from './pages/EpisodePage'
 import { HomePage } from './pages/HomePage'
@@ -8,12 +9,12 @@ import { LibraryPage } from './pages/LibraryPage'
 import { LikedPage } from './pages/LikedPage'
 import { PlayListPage } from './pages/PlayListPage'
 import { SearchPage } from './pages/SearchPage'
-// import Invoices from './routes/invoices'
 
 // css
 import './index.css'
 import 'hover.css'
-// import 'animate.css'
+
+ElementQueries.listen()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

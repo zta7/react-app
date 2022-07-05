@@ -19,24 +19,24 @@ type Props = {
   children: any
 }
 
-const GirdItemProps = (direction: Direction) => {
-  let props = {}
-  if (direction === 'row') {
-    props = {
-      xs: 12, md: 6, lg: 4,
-    }
-  } else if (direction === 'column') {
-    props = {
-      xs: 12,
-      sm: 6,
-      md: 4,
-      lg: 2,
-      sx: { display: 'flex' },
-    }
-  }
+// const GirdItemProps = (direction: Direction) => {
+//   let props = {}
+//   if (direction === 'row') {
+//     props = {
+//       xs: 12, md: 6, lg: 4,
+//     }
+//   } else if (direction === 'column') {
+//     props = {
+//       xs: 12,
+//       sm: 6,
+//       md: 4,
+//       lg: 2,
+//       sx: { display: 'flex' },
+//     }
+//   }
 
-  return props
-}
+//   return props
+// }
 
 export const ListCardContent: React.FC<Props> = ({
   title, subtitle = '', action, children,

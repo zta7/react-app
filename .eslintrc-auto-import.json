@@ -114,6 +114,7 @@
     "useLinkClickHandler": true,
     "useLocalObservable": true,
     "useLocation": true,
+    "useMediaQuery": true,
     "useMemo": true,
     "useNavigate": true,
     "useNavigationType": true,
@@ -127,6 +128,7 @@
     "useSearchParams": true,
     "useState": true,
     "useSyncExternalStore": true,
+    "useTheme": true,
     "useTransition": true,
     "when": true
   }

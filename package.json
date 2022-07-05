@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.5",
     "animate.css": "^4.1.1",
+    "css-element-queries": "^1.2.3",
     "hover.css": "^2.3.2",
     "mobx": "^6.6.0",
     "mobx-react": "^7.5.0",
@@ -27,14 +28,29 @@
     "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "@vitejs/plugin-react": "^1.3.0",
+    "autoprefixer": "^10.4.7",
+    "cqfill": "^0.6.1",
     "eslint": "^8.18.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.30.1",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss-nesting": "^10.1.10",
+    "sass": "^1.53.0",
     "typescript": "^4.6.3",
     "unplugin-auto-import": "^0.9.0",
     "vite": "^2.9.9"
-  }
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ]
 }

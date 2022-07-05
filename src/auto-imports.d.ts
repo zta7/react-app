@@ -115,6 +115,7 @@ declare global {
   const useLinkClickHandler: typeof import('react-router-dom')['useLinkClickHandler']
   const useLocalObservable: typeof import('mobx-react-lite')['useLocalObservable']
   const useLocation: typeof import('react-router-dom')['useLocation']
+  const useMediaQuery: typeof import('@mui/material')['useMediaQuery']
   const useMemo: typeof import('react')['useMemo']
   const useNavigate: typeof import('react-router-dom')['useNavigate']
   const useNavigationType: typeof import('react-router-dom')['useNavigationType']
@@ -128,6 +129,7 @@ declare global {
   const useSearchParams: typeof import('react-router-dom')['useSearchParams']
   const useState: typeof import('react')['useState']
   const useSyncExternalStore: typeof import('react')['useSyncExternalStore']
+  const useTheme: typeof import('@mui/material')['useTheme']
   const useTransition: typeof import('react')['useTransition']
   const when: typeof import('mobx')['when']
 }

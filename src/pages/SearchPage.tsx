@@ -42,16 +42,20 @@ const list3 = [
 ]
 
 export const SearchPage = () => {
-  console.log('SearchPage')
+  console.log(1)
+
   return <>
+    <div className="widget-name">
+      <h2>Element responsiveness FTW!</h2>
+    </div>
     <ListCardContent title="Your Entertainment" action={<MuiLink underline="hover">View More</MuiLink>}>
       {
-        list1.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id} sx={{ display: 'flex' }}>
+        list1.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} xl={1} key={item.id} sx={{ display: 'flex' }}>
           <VerticalCard item={item} />
         </Grid>)
       }
     </ListCardContent>
-    <ListCardContent title="你最喜欢的风格">
+    <ListCardContent title="你最喜欢的曲风">
       {
         list2.map((item) => <Grid item xs={4} key={item.id} sx={{ display: 'flex' }}>
           <CoverCard item={item} aspectRatio="2/1" />

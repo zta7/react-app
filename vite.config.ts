@@ -26,6 +26,8 @@ export default defineConfig({
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',
             'Fade',
             ['Link', 'MuiLink'],
+
+            'useMediaQuery', 'useTheme',
           ],
           '@mui/icons-material': [
             ['FavoriteBorder', 'FavoriteBorderIcon'],
