@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-import ElementQueries from 'css-element-queries/src/ElementQueries'
+// import ElementQueries from 'css-element-queries/src/ElementQueries'
 import App from './App'
 import { EpisodePage } from './pages/EpisodePage'
 import { HomePage } from './pages/HomePage'
@@ -14,7 +14,7 @@ import { SearchPage } from './pages/SearchPage'
 import './index.css'
 import 'hover.css'
 
-ElementQueries.listen()
+// ElementQueries.listen()
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

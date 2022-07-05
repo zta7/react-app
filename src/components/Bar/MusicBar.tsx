@@ -1,6 +1,6 @@
-import { MusicItem } from './MusicItem'
-import { Music } from '../models/Music'
-import { Config } from '../models/Config'
+import { MusicItem } from '../MusicItem'
+import { Music } from '../../models/Music'
+import { Config } from '../../models/Config'
 
 interface Props {
   music: Music,

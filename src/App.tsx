@@ -1,6 +1,6 @@
-import { MusicBar } from './components/MusicBar'
+import { MusicBar } from './components/Bar/MusicBar'
 import { LeftDrawer } from './components/LeftDrawer'
-import { UserMenu } from './components/UserMenu'
+import { UserMenu } from './components/Menu/UserMenu'
 // import { TestReact } from './components/TestReact'
 
 const music = new Music()

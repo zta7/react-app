@@ -1,6 +1,6 @@
 import { CoverCard } from '../components/Card/CoverCard'
 import { VerticalCard } from '../components/Card/VerticalCard'
-import { ListCardContent } from '../components/ListCardContent'
+import { CardContainer } from '../components/Container/CardContainer'
 
 const list1 = [
   new GenricList({ title: 'Your Liked', subtitle: 'Artist' }),
@@ -43,31 +43,27 @@ const list3 = [
 
 export const SearchPage = () => {
   console.log(1)
-
   return <>
-    <div className="widget-name">
-      <h2>Element responsiveness FTW!</h2>
-    </div>
-    <ListCardContent title="Your Entertainment" action={<MuiLink underline="hover">View More</MuiLink>}>
+    <CardContainer title="Your Entertainment" action={<MuiLink underline="hover">View More</MuiLink>}>
       {
         list1.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} xl={1} key={item.id} sx={{ display: 'flex' }}>
           <VerticalCard item={item} />
         </Grid>)
       }
-    </ListCardContent>
-    <ListCardContent title="你最喜欢的曲风">
+    </CardContainer>
+    <CardContainer title="你最喜欢的曲风">
       {
         list2.map((item) => <Grid item xs={4} key={item.id} sx={{ display: 'flex' }}>
           <CoverCard item={item} aspectRatio="2/1" />
         </Grid>)
       }
-    </ListCardContent>
-    <ListCardContent title="浏览全部">
+    </CardContainer>
+    <CardContainer title="浏览全部">
       {
         list3.map((item) => <Grid item xs={12} sm={6} md={4} lg={2} key={item.id}>
           <CoverCard item={item}/>
         </Grid>)
       }
-    </ListCardContent>
+    </CardContainer>
   </>
 }

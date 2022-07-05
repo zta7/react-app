@@ -34,7 +34,7 @@ code {
   word-break: break-all;
 }
 
-.widget-name h2 {
+/* .widget-name h2 {
   font-size: 12px;
 }
 
@@ -51,4 +51,4 @@ code {
 .widget-name[min-width~="700px"] h2 {
   font-size: 34px;
   color: red;
-}
+} */
