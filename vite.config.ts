@@ -20,7 +20,7 @@ export default defineConfig({
         {
           '@mui/material': [
             'Avatar', 'Typography', 'Stack', 'Chip', 'Icon', 'LinearProgress', 'Slider', 'Box', 'Badge', 'Paper', 'Container', 'Drawer', 'List', 'AppBar', 'Toolbar', 'Divider', 'Button', 'Grid',
-            'Menu', 'MenuItem', 'ButtonBase',
+            'Menu', 'MenuItem', 'ButtonBase', 'IconButton',
             'TextField', 'InputAdornment',
             'Card', 'CardContent', 'CardActions', 'CardHeader', 'CardMedia', 'CardActionArea',
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',

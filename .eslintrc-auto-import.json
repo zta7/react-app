@@ -33,6 +33,7 @@
     "Grid": true,
     "HomeIcon": true,
     "Icon": true,
+    "IconButton": true,
     "InputAdornment": true,
     "LinearProgress": true,
     "Link": true,

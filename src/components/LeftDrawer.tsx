@@ -7,13 +7,13 @@ const activeStyle = {
 
 const list1 = [
   {
-    icon: <HomeIcon />, label: 'Home', id: 'a1', link: forwardRef((props: any, ref) => <NavLink to="/home1" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+    icon: <HomeIcon />, label: 'Home', id: 'a1', link: forwardRef((props: any, ref) => <NavLink to="home1" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
   },
   {
-    icon: <SearchIcon />, label: 'Search', id: 'a2', link: forwardRef((props: any, ref) => <NavLink to="/home2" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+    icon: <SearchIcon />, label: 'Search', id: 'a2', link: forwardRef((props: any, ref) => <NavLink to="home2" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
   },
   {
-    icon: <VideoLibraryIcon />, label: 'Your Library', id: 'a3', link: forwardRef((props: any, ref) => <NavLink to="/home3" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
+    icon: <VideoLibraryIcon />, label: 'Your Library', id: 'a3', link: forwardRef((props: any, ref) => <NavLink to="home3" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>),
   },
 ]
 const list2 = [
@@ -29,9 +29,13 @@ const list2 = [
 ]
 
 const list3 = [
-  { label: '2021年你的最爱歌曲', id: 'c1', link: forwardRef((props: any, ref) => <NavLink to="/home7" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
-  { label: 'Asmr Licking', id: 'c2', link: forwardRef((props: any, ref) => <NavLink to="/home8" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
-  { label: 'Long Long Long Long Long Long Long Long Long Long Long Long', id: 'c3', link: forwardRef((props: any, ref) => <NavLink to="/home9" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: '2021年你的最爱歌曲', id: 'c1', link: forwardRef((props: any, ref) => <NavLink to="home7" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'Asmr Licking', id: 'c2', link: forwardRef((props: any, ref) => <NavLink to="home8" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'Long Long Long Long Long Long Long Long Long Long Long Long', id: 'c7', link: forwardRef((props: any, ref) => <NavLink to="home9" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'aaaaa', id: 'c3', link: forwardRef((props: any, ref) => <NavLink to="home7" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'bbbbb', id: 'c4', link: forwardRef((props: any, ref) => <NavLink to="home8" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'cccc', id: 'c5', link: forwardRef((props: any, ref) => <NavLink to="home7" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
+  { label: 'dddd', id: 'c6', link: forwardRef((props: any, ref) => <NavLink to="home8" ref={ref} {...props} style={({ isActive }) => (isActive ? activeStyle : undefined)}/>) },
 ]
 
 const listSx = {
@@ -74,12 +78,20 @@ export const LeftDrawer = () => <Stack direction="row">
       }
     </Box>
     <Divider variant="middle"/>
-    <Box sx={{ overflowY: 'scroll', flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position: 'relative', overflowY: 'auto' }}>
       {
-      list3.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
-        <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
-      </ListItemButton>)
+        list3.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+        </ListItemButton>)
       }
+    </Box>
+    <Box sx={{ width: '100%', aspectRatio: '1/1', position: 'relative' }}>
+      <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square"
+          sx={{ width: '100%', height: '100%' }}>
+      </Avatar>
+      <Icon sx={{
+        position: 'absolute', right: 0, top: 0, zIndex: 9999,
+      }} className="hvr-grow">expand_more</Icon>
     </Box>
   </List>
   <Divider orientation="vertical" flexItem/>

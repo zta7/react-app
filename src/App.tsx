@@ -8,7 +8,10 @@ const config = new Config()
 
 const App = () => {
   // const [visible] = useState(true)
-  console.log(1)
+  // const navigate = useNavigate()
+  // const location = useLocation()
+  console.log('App')
+  // console.log(location)
   return <Box sx={{
     width: '100vw', height: '100vh', overflow: 'hidden',
   }}>
@@ -20,6 +23,16 @@ const App = () => {
         <AppBar position="fixed" sx={{
           height: 60, boxShadow: 0, display: 'flex', flexFlow: 'row nowrap', alignItems: 'center', justifyContent: 'space-between', py: 0,
         }} color="inherit" component={CardContent} >
+          <Box>
+            <IconButton disableRipple
+                sx={{ p: 0, mr: 1 }} >
+              <Icon fontSize="large">keyboard_arrow_left</Icon>
+            </IconButton>
+            <IconButton disableRipple
+                sx={{ p: 0 }} >
+              <Icon fontSize="large">keyboard_arrow_right</Icon>
+            </IconButton>
+          </Box>
           <Box>
             {/* <TextField
                 size="small"

@@ -34,6 +34,7 @@ declare global {
   const Grid: typeof import('@mui/material')['Grid']
   const HomeIcon: typeof import('@mui/icons-material')['Home']
   const Icon: typeof import('@mui/material')['Icon']
+  const IconButton: typeof import('@mui/material')['IconButton']
   const InputAdornment: typeof import('@mui/material')['InputAdornment']
   const LinearProgress: typeof import('@mui/material')['LinearProgress']
   const Link: typeof import('react-router-dom')['Link']
