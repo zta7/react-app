@@ -69,6 +69,7 @@
     "ShuffleIcon": true,
     "SkipNextIcon": true,
     "SkipPreviousIcon": true,
+    "Slide": true,
     "Slider": true,
     "Stack": true,
     "TextField": true,

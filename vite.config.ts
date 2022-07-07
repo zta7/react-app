@@ -1,7 +1,9 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // @ts-nocheck
 import { defineConfig } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import react from '@vitejs/plugin-react'
+import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -24,7 +26,7 @@ export default defineConfig({
             'TextField', 'InputAdornment',
             'Card', 'CardContent', 'CardActions', 'CardHeader', 'CardMedia', 'CardActionArea',
             'ListItem', 'ListItemAvatar', 'ListItemButton', 'ListItemIcon', 'ListItemText',
-            'Fade',
+            'Fade', 'Slide',
             ['Link', 'MuiLink'],
 
             'useMediaQuery', 'useTheme',
@@ -66,4 +68,9 @@ export default defineConfig({
       dirs: ['./src/models/'],
     }),
   ],
+  resolve: {
+    alias: {
+      src: path.resolve(__dirname, './src'),
+    },
+  },
 })

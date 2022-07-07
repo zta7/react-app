@@ -53,7 +53,7 @@ const App = () => {
           </Box>
         </AppBar>
         <Box sx={{
-          overflowY: 'scroll', position: 'fixed', left: 0, right: 0, bottom: 0, top: 60,
+          overflowY: 'auto', position: 'fixed', left: 0, right: 0, bottom: 0, top: 60,
         }}>
           <Outlet />
         </Box>

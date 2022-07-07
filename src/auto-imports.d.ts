@@ -70,6 +70,7 @@ declare global {
   const ShuffleIcon: typeof import('@mui/icons-material')['Shuffle']
   const SkipNextIcon: typeof import('@mui/icons-material')['SkipNext']
   const SkipPreviousIcon: typeof import('@mui/icons-material')['SkipPrevious']
+  const Slide: typeof import('@mui/material')['Slide']
   const Slider: typeof import('@mui/material')['Slider']
   const Stack: typeof import('@mui/material')['Stack']
   const TextField: typeof import('@mui/material')['TextField']
