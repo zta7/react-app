@@ -24,7 +24,7 @@ export const MusicItem = observer(({ music }: Props) => {
           position: 'absolute', right: 0, top: 0, zIndex: 9999,
         }} className="hvr-grow" onClick={(evt) => $store.toogle('a', evt)}>expand_less</Icon>
         <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square"
-            sx={{ width: 55, height: 55 }}>
+            sx={{ height: '100%', aspectRatio: '1/1' }}>
         </Avatar>
       </Box>
       <Stack>
