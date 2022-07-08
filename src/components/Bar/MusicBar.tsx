@@ -1,10 +1,9 @@
+import { rootContext } from 'src/store'
 import { MusicItem } from './MusicBar/MusicItem'
 import { Music } from '../../models/Music'
-import { Config } from '../../models/Config'
 
 interface Props {
   music: Music,
-  config: Config
 }
 
 const sliderSx = {
@@ -26,16 +25,17 @@ const sliderSx = {
   },
 }
 
-export const MusicBar = observer(({ music, config }: Props) => {
+export const MusicBar = observer(({ music }: Props) => {
   const { isPlaying } = music
-  const { isShuffling, playingMode, volume } = config
+  const $app = useContext(rootContext).app
+  const { isShuffling, playingMode, volume } = $app
   return <Paper square sx={{ px: 2, height: 'inherit' }}>
     <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ height: 'inherit' }}>
       <MusicItem music={music}/>
       <Stack sx={{ flex: 0.5 }} alignItems="center">
         <Stack direction="row" alignItems="center" spacing={1}>
           <Stack sx={{ position: 'relative' }} color={isShuffling ? 'error.main' : 'text.primary'} alignItems="center">
-            <ShuffleIcon onClick={() => config.toogle('isShuffling')}/>
+            <ShuffleIcon onClick={() => $app.toogle('isShuffling')}/>
             { isShuffling && <CircleIcon sx={{ fontSize: 8, position: 'absolute', bottom: '-8px' }}/> }
           </Stack>
           <SkipPreviousIcon fontSize="large"/>
@@ -44,7 +44,7 @@ export const MusicBar = observer(({ music, config }: Props) => {
           </Box>
           <SkipNextIcon fontSize="large"/>
           <Stack sx={{ position: 'relative' }}
-              color={playingMode % 3 === 0 ? 'error.main' : 'text.primary'} alignItems="center" onClick={() => config.set(['playingMode', playingMode + 1])}>
+              color={playingMode % 3 === 0 ? 'error.main' : 'text.primary'} alignItems="center" onClick={() => $app.set(['playingMode', playingMode + 1])}>
             { playingMode % 3 === 1 ? <LooksOneIcon /> : <LoopIcon/> }
             { playingMode % 3 === 0 && <CircleIcon sx={{ fontSize: 8, position: 'absolute', bottom: '-8px' }}/>}
           </Stack>
@@ -67,8 +67,13 @@ export const MusicBar = observer(({ music, config }: Props) => {
         <QueueMusicIcon />
         <CastIcon />
         <Stack direction="row" spacing={0.5} alignItems="center">
-          <VolumeDownIcon/>
-          <Slider size="small" value={volume} onChange={(evt, v) => config.set(['volume', v])}
+          {
+            volume === 0 ? <VolumeOffIcon />
+              : volume <= 70
+                ? <VolumeDownIcon/>
+                : <VolumeUpIcon />
+          }
+          <Slider size="small" value={volume} onChange={(evt, v) => $app.set(['volume', v])}
               min={0} max={100} sx={{ ...sliderSx, width: '120px' }}/>
         </Stack>
         <OpenInFullIcon />

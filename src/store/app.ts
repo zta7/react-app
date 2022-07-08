@@ -4,13 +4,30 @@ import {
   types,
 } from 'mobx-state-tree'
 
+type TooglePropKeys = {
+  isShuffling: boolean
+}
+
+type PropKeys = {
+ playingMode: number
+ volume: number
+}
+
 const app = types
   .model('app', {
     a: true,
+    isShuffling: false,
+    playingMode: 0,
+    volume: 0,
   })
   .actions((self) => ({
-    toogle(k: 'a') {
+    toogle(k: keyof TooglePropKeys) {
       self[k] = !self[k]
+    },
+
+    set(tuple: [keyof PropKeys, any]) {
+      const [k, v] = tuple
+      self[k] = v
     },
   }))
 

@@ -52,10 +52,10 @@ const textSx = {
 }
 
 export const LeftDrawer = observer(() => {
-  const $store = useContext(rootContext)
+  const $app = useContext(rootContext).app
   console.log('LeftDrawer')
 
-  return <Stack direction="row">
+  return (
     <List sx={{ ...listSx }} dense>
       <Box>
         {
@@ -86,7 +86,7 @@ export const LeftDrawer = observer(() => {
       }
       </Box>
       {
-        <Slide direction="up" in={!$store.a} appear>
+        <Slide direction="up" in={!$app.a} appear>
           <Box sx={{
             width: '100%',
             aspectRatio: '1/1',
@@ -98,11 +98,10 @@ export const LeftDrawer = observer(() => {
             </Avatar>
             <Icon sx={{
               position: 'absolute', right: 0, top: 0, zIndex: 9999,
-            }} className="hvr-grow" onClick={() => $store.toogle('a')}>expand_more</Icon>
+            }} className="hvr-grow" onClick={() => $app.toogle('a')}>expand_more</Icon>
           </Box>
         </Slide>
       }
     </List>
-    <Divider orientation="vertical" flexItem/>
-  </Stack>
+  )
 })

@@ -28,6 +28,7 @@ module.exports = {
     'no-unused-vars': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
+    'no-nested-ternary': 'off',
     'max-classes-per-file': 'off',
     'lines-between-class-members': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],

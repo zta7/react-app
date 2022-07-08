@@ -1,5 +1,6 @@
 {
   "globals": {
+    "AccessTimeIcon": true,
     "AddCircleIcon": true,
     "AlbumIcon": true,
     "AppBar": true,
@@ -29,6 +30,7 @@
     "Fade": true,
     "FavoriteBorderIcon": true,
     "FavoriteIcon": true,
+    "FixedSizeList": true,
     "GenricList": true,
     "Grid": true,
     "HomeIcon": true,
@@ -72,6 +74,12 @@
     "Slide": true,
     "Slider": true,
     "Stack": true,
+    "Table": true,
+    "TableBody": true,
+    "TableCell": true,
+    "TableContainer": true,
+    "TableHead": true,
+    "TableRow": true,
     "TextField": true,
     "Toolbar": true,
     "Typography": true,
