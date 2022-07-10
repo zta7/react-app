@@ -50,6 +50,7 @@
     "Menu": true,
     "MenuItem": true,
     "MicIcon": true,
+    "MoreHorizIcon": true,
     "MuiLink": true,
     "Music": true,
     "NavLink": true,

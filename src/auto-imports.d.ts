@@ -51,6 +51,7 @@ declare global {
   const Menu: typeof import('@mui/material')['Menu']
   const MenuItem: typeof import('@mui/material')['MenuItem']
   const MicIcon: typeof import('@mui/icons-material')['Mic']
+  const MoreHorizIcon: typeof import('@mui/icons-material')['MoreHoriz']
   const MuiLink: typeof import('@mui/material')['Link']
   const Music: typeof import('./models/Music')['Music']
   const NavLink: typeof import('react-router-dom')['NavLink']

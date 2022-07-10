@@ -64,6 +64,7 @@ export default defineConfig({
             ['ArrowDropUp', 'ArrowDropUpIcon'],
             ['OpenInNew', 'OpenInNewIcon'],
             ['AccessTime', 'AccessTimeIcon'],
+            ['MoreHoriz', 'MoreHorizIcon'],
           ],
           'react-window': [
             'FixedSizeList',

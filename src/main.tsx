@@ -15,6 +15,7 @@ import { rootContext, rootStore } from './store'
 import './index.css'
 import 'hover.css'
 import 'animate.css'
+import 'simplebar-react/dist/simplebar.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>

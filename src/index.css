@@ -37,6 +37,15 @@ code {
   height: 100%
 }
 
+.hide-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
 .ellipsis {
   text-overflow: ellipsis;
   white-space: nowrap;

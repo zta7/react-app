@@ -43,11 +43,11 @@ export const MusicItem = observer(({ music }: Props) => {
 
         </Stack>
       </Stack>
-      <div onClick={() => music.toogle('isLiked')}>
+      <Box onClick={() => music.toogle('isLiked')}>
         {
-        isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/>
-      }
-      </div>
+          isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/>
+        }
+      </Box>
     </Stack>
   )
 })
