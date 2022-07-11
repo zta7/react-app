@@ -18,7 +18,7 @@ import 'animate.css'
 import 'simplebar-react/dist/simplebar.min.css'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.Fragment>
+  <React.StrictMode>
     <rootContext.Provider value={rootStore}>
       <BrowserRouter>
         <Routes>
@@ -33,5 +33,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         </Routes>
       </BrowserRouter>
     </rootContext.Provider>
-  </React.Fragment>,
+  </React.StrictMode>,
 )

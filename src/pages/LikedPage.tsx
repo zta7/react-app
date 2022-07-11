@@ -1,8 +1,9 @@
 // import { useVirtualizer } from '@tanstack/react-virtual'
 import { Fragment } from 'react'
+import { Virtuoso } from 'react-virtuoso'
 
 const list = [
-  ...Array.from({ length: 500 }, () => new Music()),
+  ...Array.from({ length: 100 }, () => new Music()),
 ]
 
 const GridColumnProps = {
@@ -46,14 +47,10 @@ const GridRowProps = {
   },
 }
 
-export const LikedPage = () => {
+export const LikedPage = () => { /*  */
   console.log('LikedPage')
-  // const rowVirtualizer = useVirtualizer({
-  //   count: 10000,
-  //   getScrollElement: () => document.querySelector('.simplebar-content-wrapper'),
-  //   estimateSize: () => 35,
-  //   overscan: 5,
-  // })
+  const parentEl = document.querySelector('.simplebar-content-wrapper')
+  console.log(parentEl)
   return (
     <Box>
       <Stack direction="row" spacing={2}>
@@ -85,7 +82,63 @@ export const LikedPage = () => {
         <Box><Typography noWrap>Create Date</Typography></Box>
         <Box><AccessTimeIcon /></Box>
       </Box>
-      <Box>
+      <Box sx={{ height: list.length * GridRowProps.sx.height }}>
+        <Virtuoso
+            customScrollParent={parentEl}
+            totalCount={list.length}
+            itemContent={(i) => {
+              const music = list[i]
+              const {
+                title, artists, isLiked,
+              } = music
+              return <Box {...GridRowProps} key={i}>
+                <Stack direction="row" alignItems="center" justifyContent="end">
+                  <Box>
+                    <Typography>{ i + 1 }</Typography>
+                  </Box>
+                </Stack>
+                <Stack direction="row" alignItems="center" spacing={1}>
+                  <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square">
+                  </Avatar>
+                  <Stack sx={{ minWidth: 0 }}>
+                    <Typography variant="subtitle2" noWrap>
+                      { title }
+                    </Typography>
+                    <Stack direction="row" alignItems="center" spacing={0.2}>
+                      <Avatar sx={{
+                        width: 14, height: 14, fontSize: '12px', mr: 0.5,
+                      }} variant="square">E</Avatar>
+                      <Typography variant="caption" fontSize={10} noWrap>
+                        {
+                  artists.map((e, i2, arr) => (
+                    <Fragment key={e}>
+                      <>{ e }</>
+                      {
+                        i !== arr.length - 1
+                        && <>,</>
+                      }
+                    </Fragment>
+                  ))
+                }
+                      </Typography>
+                    </Stack>
+                  </Stack>
+                </Stack>
+                <Stack direction="row" alignItems="center">
+                  <Typography noWrap>Let Me Love You (Sean Paul Remix)</Typography>
+                </Stack>
+                <Stack direction="row" alignItems="center">
+                  <Typography noWrap>2022/06/06</Typography>
+                </Stack>
+                <Stack onClick={() => music.toogle('isLiked')} direction="row" alignItems="center" spacing={1}>
+                  { music.isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/> }
+                  <Typography>2:45</Typography>
+                  <MoreHorizIcon fontSize="small" className="MoreIcon"/>
+                </Stack>
+              </Box>
+            }}/>
+      </Box>
+      {/* <Box>
         {
           list.map((music, i) => {
             const {
@@ -138,7 +191,7 @@ export const LikedPage = () => {
             </Box>
           })
         }
-      </Box>
+      </Box> */}
     </Box>
   )
 }
