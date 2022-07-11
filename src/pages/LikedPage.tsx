@@ -1,6 +1,7 @@
 // import { useVirtualizer } from '@tanstack/react-virtual'
 import { Fragment } from 'react'
 import { Virtuoso } from 'react-virtuoso'
+import { PageContext } from 'src/App'
 
 const list = [
   ...Array.from({ length: 100 }, () => new Music()),
@@ -48,9 +49,11 @@ const GridRowProps = {
 }
 
 export const LikedPage = () => { /*  */
-  console.log('LikedPage')
-  const parentEl = document.querySelector('.simplebar-content-wrapper')
-  console.log(parentEl)
+  const context = useContext(PageContext)
+  // const VirtualArea = useEffect(() => {
+
+  // })
+  console.log(context.scrollAreaRef.current)
   return (
     <Box>
       <Stack direction="row" spacing={2}>
@@ -83,8 +86,9 @@ export const LikedPage = () => { /*  */
         <Box><AccessTimeIcon /></Box>
       </Box>
       <Box sx={{ height: list.length * GridRowProps.sx.height }}>
+        {/* {context.scrollAreaRef.current ? '11' : '222' } */}
         <Virtuoso
-            customScrollParent={parentEl}
+            customScrollParent={context.scrollAreaRef.current as HTMLElement}
             totalCount={list.length}
             itemContent={(i) => {
               const music = list[i]

@@ -1,3 +1,4 @@
+import { createContext, RefObject } from 'react'
 import SimpleBar from 'simplebar-react'
 import { MusicBar } from './components/Bar/MusicBar'
 import { LeftDrawer } from './components/LeftDrawer'
@@ -5,6 +6,15 @@ import { UserMenu } from './components/Menu/UserMenu'
 // import { TestReact } from './components/TestReact'
 
 const music = new Music()
+const scrollAreaRef = createRef()
+interface ContextProps {
+  scrollAreaRef: RefObject<unknown>
+}
+const PageContext = createContext<ContextProps>({
+  scrollAreaRef,
+})
+
+console.log(PageContext)
 
 const App = () => {
   console.log('App')
@@ -16,7 +26,7 @@ const App = () => {
     </Stack>
     <Box className="main relative-position">
       <Box className="absolute-full" >
-        <SimpleBar autoHide style={{ maxHeight: '100%' }}>
+        <SimpleBar autoHide style={{ maxHeight: '100%' }} scrollableNodeProps={{ ref: scrollAreaRef }}>
           <Box sx={{ px: 4 }}>
             <Box sx={{
               display: 'flex',
@@ -59,9 +69,9 @@ const App = () => {
                 <UserMenu />
               </Box>
             </Box>
-            <Box className="relative-position" >
+            <PageContext.Provider value={{ scrollAreaRef }}>
               <Outlet />
-            </Box>
+            </PageContext.Provider>
           </Box>
         </SimpleBar>
       </Box>
@@ -72,4 +82,5 @@ const App = () => {
   </Box>
 }
 
+export { PageContext }
 export default App
