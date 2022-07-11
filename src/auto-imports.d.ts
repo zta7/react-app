@@ -31,7 +31,6 @@ declare global {
   const Fade: typeof import('@mui/material')['Fade']
   const FavoriteBorderIcon: typeof import('@mui/icons-material')['FavoriteBorder']
   const FavoriteIcon: typeof import('@mui/icons-material')['Favorite']
-  const FixedSizeList: typeof import('react-window')['FixedSizeList']
   const GenricList: typeof import('./models/GenricList')['GenricList']
   const Grid: typeof import('@mui/material')['Grid']
   const HomeIcon: typeof import('@mui/icons-material')['Home']

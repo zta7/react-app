@@ -1,3 +1,6 @@
+// import { useVirtualizer } from '@tanstack/react-virtual'
+import { Fragment } from 'react'
+
 const list = [
   ...Array.from({ length: 500 }, () => new Music()),
 ]
@@ -11,6 +14,12 @@ const GridColumnProps = {
     position: 'sticky',
     zIndex: 9999,
     top: 64,
+
+    '&': {
+      '> *': {
+        minWidth: 0,
+      },
+    },
   },
 }
 
@@ -18,9 +27,13 @@ const GridRowProps = {
   sx: {
     display: 'grid',
     gridGap: 16,
-    height: 56,
     gridTemplateColumns: '[index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr)',
+
+    height: 56,
     '&': {
+      '> *': {
+        minWidth: 0,
+      },
       '.MoreIcon': {
         display: 'none',
       },
@@ -35,6 +48,12 @@ const GridRowProps = {
 
 export const LikedPage = () => {
   console.log('LikedPage')
+  // const rowVirtualizer = useVirtualizer({
+  //   count: 10000,
+  //   getScrollElement: () => document.querySelector('.simplebar-content-wrapper'),
+  //   estimateSize: () => 35,
+  //   overscan: 5,
+  // })
   return (
     <Box>
       <Stack direction="row" spacing={2}>
@@ -56,68 +75,17 @@ export const LikedPage = () => {
         <PlayArrowIcon fontSize="large" sx={{ bgcolor: 'success.main', borderRadius: 12, p: 1.5 }}/>
       </Box>
       <Box {...GridColumnProps}>
-        <Typography className="full-width" textAlign="end">#</Typography>
-        <Typography noWrap>Title</Typography>
-        <Typography noWrap>Alumb</Typography>
-        <Typography noWrap>Create Date</Typography>
+        <Box><Typography textAlign="end">#</Typography></Box>
+        <Box>
+          <Typography noWrap>Title LongLongLongLongLongLo
+            ngLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong
+          </Typography>
+        </Box>
+        <Box><Typography noWrap>Alumb</Typography></Box>
+        <Box><Typography noWrap>Create Date</Typography></Box>
         <Box><AccessTimeIcon /></Box>
       </Box>
-      <Box sx={{ height: list.length * GridRowProps.sx.height }}>
-        <FixedSizeList
-            width="100%"
-            height={200}
-            itemCount={list.length}
-            itemSize={GridRowProps.sx.height}>
-          {
-            ({ index: i, style }) => {
-              const music = list[i]
-              const {
-                title, artists, isLiked,
-              } = music
-              return <Box {...GridRowProps} style={style}>
-                <Stack direction="row" alignItems="center" justifyContent="end">
-                  <Box>
-                    <Typography>{ i + 1 }</Typography>
-                  </Box>
-                </Stack>
-                <Stack direction="row" alignItems="center" spacing={1}>
-                  <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square">
-                  </Avatar>
-                  <Stack>
-                    <Typography variant="subtitle2" noWrap>
-                      { title }
-                    </Typography>
-                    <Stack direction="row" alignItems="center" spacing={0.2}>
-                      <Avatar sx={{
-                        width: 14, height: 14, fontSize: '12px', mr: 0.5,
-                      }} variant="square">E</Avatar>
-                      {
-                      artists.map((e, i2, arr) => (
-                        <Typography key={e} variant="caption" fontSize={10} noWrap>
-                          <span>{ e }</span>
-                          {
-                            i !== arr.length - 1
-                            && <span>,</span>
-                          }
-                        </Typography>
-                      ))
-                    }
-                    </Stack>
-                  </Stack>
-                </Stack>
-                <Typography noWrap>Let Me Love You (Sean Paul Remix)</Typography>
-                <Typography>2022/06/06</Typography>
-                <Stack onClick={() => music.toogle('isLiked')} direction="row" alignItems="center" spacing={1}>
-                  { music.isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/> }
-                  <Typography>2:45</Typography>
-                  <MoreHorizIcon fontSize="small" className="MoreIcon"/>
-                </Stack>
-              </Box>
-            }
-          }
-        </FixedSizeList>
-      </Box>
-      {/* <Box sx={{ height: 1000 }}>
+      <Box>
         {
           list.map((music, i) => {
             const {
@@ -132,7 +100,7 @@ export const LikedPage = () => {
               <Stack direction="row" alignItems="center" spacing={1}>
                 <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square">
                 </Avatar>
-                <Stack>
+                <Stack sx={{ minWidth: 0 }}>
                   <Typography variant="subtitle2" noWrap>
                     { title }
                   </Typography>
@@ -140,22 +108,28 @@ export const LikedPage = () => {
                     <Avatar sx={{
                       width: 14, height: 14, fontSize: '12px', mr: 0.5,
                     }} variant="square">E</Avatar>
-                    {
+                    <Typography variant="caption" fontSize={10} noWrap>
+                      {
                       artists.map((e, i2, arr) => (
-                        <Typography key={e} variant="caption" fontSize={10} noWrap>
-                          <span>{ e }</span>
+                        <Fragment key={e}>
+                          <>{ e }</>
                           {
                             i !== arr.length - 1
-                            && <span>,</span>
+                            && <>,</>
                           }
-                        </Typography>
+                        </Fragment>
                       ))
                     }
+                    </Typography>
                   </Stack>
                 </Stack>
               </Stack>
-              <Typography noWrap>Let Me Love You (Sean Paul Remix)</Typography>
-              <Typography>2022/06/06</Typography>
+              <Stack direction="row" alignItems="center">
+                <Typography noWrap>Let Me Love You (Sean Paul Remix)</Typography>
+              </Stack>
+              <Stack direction="row" alignItems="center">
+                <Typography noWrap>2022/06/06</Typography>
+              </Stack>
               <Stack onClick={() => music.toogle('isLiked')} direction="row" alignItems="center" spacing={1}>
                 { music.isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/> }
                 <Typography>2:45</Typography>
@@ -164,7 +138,7 @@ export const LikedPage = () => {
             </Box>
           })
         }
-      </Box> */}
+      </Box>
     </Box>
   )
 }

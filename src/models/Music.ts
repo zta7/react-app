@@ -5,7 +5,7 @@ interface TooglePropKeys {
 
 export class Music {
   id = Math.random()
-  title = 'Blank Account'
+  title = 'Blank Account Long Long Long Long Long'
   album = 'Issa Album'
   artists = ['21 Savage', 'adsasd']
   during = 100000

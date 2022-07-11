@@ -66,9 +66,12 @@ export default defineConfig({
             ['AccessTime', 'AccessTimeIcon'],
             ['MoreHoriz', 'MoreHorizIcon'],
           ],
-          'react-window': [
-            'FixedSizeList',
-          ],
+          // 'react-window': [
+          //   'FixedSizeList',
+          // ],
+          // '@tanstack/react-virtual': [
+          //   'useVirtualizer',
+          // ],
         },
       ],
       dirs: ['./src/models/'],

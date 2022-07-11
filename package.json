@@ -13,6 +13,7 @@
     "@mui/icons-material": "^5.8.4",
     "@mui/material": "^5.8.5",
     "@tanstack/react-table": "^8.2.1",
+    "@tanstack/react-virtual": "^3.0.0-beta.2",
     "animate.css": "^4.1.1",
     "css-element-queries": "^1.2.3",
     "hover.css": "^2.3.2",
