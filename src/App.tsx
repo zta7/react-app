@@ -1,4 +1,4 @@
-import { createContext, RefObject } from 'react'
+import { createContext } from 'react'
 import SimpleBar from 'simplebar-react'
 import { MusicBar } from './components/Bar/MusicBar'
 import { LeftDrawer } from './components/LeftDrawer'
@@ -6,18 +6,16 @@ import { UserMenu } from './components/Menu/UserMenu'
 // import { TestReact } from './components/TestReact'
 
 const music = new Music()
-const scrollAreaRef = createRef()
-interface ContextProps {
-  scrollAreaRef: RefObject<unknown>
-}
-const PageContext = createContext<ContextProps>({
-  scrollAreaRef,
-})
-
-console.log(PageContext)
+const simplebarRef = createRef<SimpleBar>()
+// eslint-disable-next-line max-len
+const SimplebarRefContext = createContext(simplebarRef)
 
 const App = () => {
-  console.log('App')
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   const headerHeight = 70
   return <Box className="app">
     <Stack className="navbar" direction="row">
@@ -26,32 +24,33 @@ const App = () => {
     </Stack>
     <Box className="main relative-position">
       <Box className="absolute-full" >
-        <SimpleBar autoHide style={{ maxHeight: '100%' }} scrollableNodeProps={{ ref: scrollAreaRef }}>
-          <Box sx={{ px: 4 }}>
-            <Box sx={{
-              display: 'flex',
-              flexFlow: 'row nowrap',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              p: 0,
-              boxShadow: 0,
-              zIndex: 9999,
-              position: 'sticky',
-              top: 0,
-              height: headerHeight,
-            }}>
-              <Box>
-                <IconButton disableRipple
-                    sx={{ p: 0, mr: 1 }} >
-                  <Icon fontSize="large">keyboard_arrow_left</Icon>
-                </IconButton>
-                <IconButton disableRipple
-                    sx={{ p: 0 }} >
-                  <Icon fontSize="large">keyboard_arrow_right</Icon>
-                </IconButton>
-              </Box>
-              <Box>
-                {/* <TextField
+        <SimpleBar style={{ maxHeight: '100%' }} ref={simplebarRef}>
+          <SimplebarRefContext.Provider value={simplebarRef}>
+            <Box sx={{ px: 4 }}>
+              <Box sx={{
+                display: 'flex',
+                flexFlow: 'row nowrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                p: 0,
+                boxShadow: 0,
+                zIndex: 9999,
+                position: 'sticky',
+                top: 0,
+                height: headerHeight,
+              }}>
+                <Box>
+                  <IconButton disableRipple
+                      sx={{ p: 0, mr: 1 }} >
+                    <Icon fontSize="large">keyboard_arrow_left</Icon>
+                  </IconButton>
+                  <IconButton disableRipple
+                      sx={{ p: 0 }} >
+                    <Icon fontSize="large">keyboard_arrow_right</Icon>
+                  </IconButton>
+                </Box>
+                <Box>
+                  {/* <TextField
               size="small"
               color="primary"
               focused
@@ -64,15 +63,16 @@ const App = () => {
                 ),
               }}
               variant="outlined"/> */}
+                </Box>
+                <Box>
+                  <UserMenu />
+                </Box>
               </Box>
-              <Box>
-                <UserMenu />
-              </Box>
+              {
+              mounted && <Outlet />
+            }
             </Box>
-            <PageContext.Provider value={{ scrollAreaRef }}>
-              <Outlet />
-            </PageContext.Provider>
-          </Box>
+          </SimplebarRefContext.Provider>
         </SimpleBar>
       </Box>
     </Box>
@@ -82,5 +82,5 @@ const App = () => {
   </Box>
 }
 
-export { PageContext }
+export { SimplebarRefContext }
 export default App
