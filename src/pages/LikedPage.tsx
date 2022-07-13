@@ -51,16 +51,19 @@ const GridRowProps = {
 
 export const LikedPage = () => { /*  */
   const simplebarRef = useContext(SimplebarRefContext).current as SimpleBar
-  console.log(simplebarRef)
+
+  // const scrollEL = simplebarRef.getScrollElement()
+  // // console.log(scrollEL.scrollTop)
   return (
     <Box>
-      <Stack direction="row" spacing={2} sx={{ py: 2 }}>
+      <Stack direction="row" alignItems="end" spacing={2} sx={{ pb: 4 }}
+          className="contentSpacing">
         <Box sx={{ width: 232, height: 232, flexShrink: 0 }}>
           <Avatar src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" variant="square" sx={{ width: '100%', height: '100%' }}>
             <FavoriteIcon />
           </Avatar>
         </Box>
-        <Stack sx={{ alignSelf: 'end' }}>
+        <Stack>
           <Typography variant="caption" noWrap>播放清单</Typography>
           <Typography variant="h1" noWrap>已按赞的歌曲</Typography>
           <Stack direction="row" alignItems="center" spacing={1}>
@@ -70,7 +73,12 @@ export const LikedPage = () => { /*  */
         </Stack>
       </Stack>
       <Box sx={{ py: 1 }}>
-        <PlayArrowIcon fontSize="large" sx={{ bgcolor: 'success.main', borderRadius: 12, p: 1.5 }}/>
+        <PlayArrowIcon sx={{
+          bgcolor: 'success.main',
+          borderRadius: 12,
+          fontSize: 56,
+          p: 1.2,
+        }}/>
       </Box>
       <Box {...GridColumnProps}>
         <Box><Typography textAlign="end">#</Typography></Box>
@@ -87,8 +95,10 @@ export const LikedPage = () => { /*  */
         <Virtuoso
             customScrollParent={simplebarRef.getScrollElement() as HTMLElement}
             totalCount={list.length}
-            increaseViewportBy={{ top: 56 * 20, bottom: 56 * 20 }}
-            // overscan={{ main: 5, reverse: 5 }}
+            increaseViewportBy={{
+              top: GridRowProps.sx.height * 20,
+              bottom: GridRowProps.sx.height * 20,
+            }}
             itemContent={(i) => {
               const music = list[i]
               const {

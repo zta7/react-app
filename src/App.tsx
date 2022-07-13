@@ -15,42 +15,46 @@ const App = () => {
   useEffect(() => {
     setMounted(true)
   }, [])
+  const location = useLocation()
 
-  const headerHeight = 70
-  return <Box className="app">
-    <Stack className="navbar" direction="row">
-      <LeftDrawer />
-      <Divider orientation="vertical"/>
-    </Stack>
-    <Box className="main relative-position">
-      <Box className="absolute-full" >
-        <SimpleBar style={{ maxHeight: '100%' }} ref={simplebarRef}>
-          <SimplebarRefContext.Provider value={simplebarRef}>
-            <Box sx={{ px: 4 }}>
-              <Box sx={{
-                display: 'flex',
-                flexFlow: 'row nowrap',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                p: 0,
-                boxShadow: 0,
-                zIndex: 9999,
-                position: 'sticky',
-                top: 0,
-                height: headerHeight,
-              }}>
-                <Box>
-                  <IconButton disableRipple
-                      sx={{ p: 0, mr: 1 }} >
-                    <Icon fontSize="large">keyboard_arrow_left</Icon>
-                  </IconButton>
-                  <IconButton disableRipple
-                      sx={{ p: 0 }} >
-                    <Icon fontSize="large">keyboard_arrow_right</Icon>
-                  </IconButton>
-                </Box>
-                <Box>
-                  {/* <TextField
+  useEffect(() => {
+    if (simplebarRef.current) {
+      const scrollEl = simplebarRef.current.getScrollElement()
+      scrollEl.scrollTop = 0
+    }
+  }, [location])
+
+  const headerHeight = 64
+  return (
+    <Box className="app">
+      <Stack className="navbar" direction="row">
+        <LeftDrawer />
+        <Divider orientation="vertical"/>
+      </Stack>
+      <Box className="main" sx={{
+        display: 'flex',
+        flexFlow: 'row nowrap',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        p: 0,
+        boxShadow: 0,
+        zIndex: 9999,
+        position: 'sticky',
+        top: 0,
+        height: headerHeight,
+      }}>
+        <Box>
+          <IconButton disableRipple
+              sx={{ p: 0, mr: 1 }} >
+            <Icon fontSize="large">keyboard_arrow_left</Icon>
+          </IconButton>
+          <IconButton disableRipple
+              sx={{ p: 0 }} >
+            <Icon fontSize="large">keyboard_arrow_right</Icon>
+          </IconButton>
+        </Box>
+        <Box>
+          {/* <TextField
               size="small"
               color="primary"
               focused
@@ -63,23 +67,28 @@ const App = () => {
                 ),
               }}
               variant="outlined"/> */}
-                </Box>
-                <Box>
-                  <UserMenu />
-                </Box>
-              </Box>
-              {
-              mounted && <Outlet />
-            }
-            </Box>
-          </SimplebarRefContext.Provider>
-        </SimpleBar>
+        </Box>
+        <Box>
+          <UserMenu />
+        </Box>
       </Box>
-    </Box>
-    <Box className="footer">
-      <MusicBar music={music} />
-    </Box>
-  </Box>
+      <Box className="main relative-position">
+        <Box className="absolute-full" >
+          <SimpleBar style={{ maxHeight: '100%' }} ref={simplebarRef}>
+            <SimplebarRefContext.Provider value={simplebarRef}>
+              <Box>
+                {
+                  mounted && <Outlet />
+                }
+              </Box>
+            </SimplebarRefContext.Provider>
+          </SimpleBar>
+        </Box>
+      </Box>
+      <Box className="footer">
+        <MusicBar music={music} />
+      </Box>
+    </Box>)
 }
 
 export { SimplebarRefContext }

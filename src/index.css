@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+* {
+  box-sizing: border-box;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -107,4 +111,10 @@ code {
 
 .ListItemEven {
   background-color: #e6e4dc;
+}
+
+.contentSpacing {
+  height: 30vh;
+  max-height: 500px;
+  min-height: 340px;
 }
