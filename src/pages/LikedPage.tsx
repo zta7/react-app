@@ -1,8 +1,11 @@
 // import { useVirtualizer } from '@tanstack/react-virtual'
-import { Fragment } from 'react'
+import React, { Fragment } from 'react'
 import { Virtuoso } from 'react-virtuoso'
 import { SimplebarRefContext } from 'src/App'
 import SimpleBar from 'simplebar-react'
+import { Music } from 'src/models/Music'
+import { rootContext } from 'src/store'
+import { ScaleLoader } from 'react-spinners'
 
 const list = [
   ...Array.from({ length: 500 }, () => new Music()),
@@ -38,6 +41,7 @@ const GridRowProps = {
     gridTemplateColumns: '[index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr)',
 
     height: 56,
+    px: 2.5,
     borderRadius: 1,
     '&': {
       '> *': {
@@ -46,28 +50,57 @@ const GridRowProps = {
       '.MoreIcon': {
         display: 'none',
       },
+      '.index': {
+        display: 'block',
+      },
+      '.index_icon': {
+        display: 'none',
+      },
       ':focus-within': {
         bgcolor: 'hsla(0,0%,0%,.5)',
+        '.index': {
+          display: 'none',
+        },
+        '.index_icon': {
+          display: 'block',
+        },
       },
       ':hover': {
         bgcolor: 'hsla(0,0%,0%,.5)',
+        '.index': {
+          display: 'none',
+        },
+        '.index_icon': {
+          display: 'block',
+        },
       },
       '&.active': {
         bgcolor: 'hsla(0,0%,0%,.7)',
+        '.index': {
+          display: 'none',
+        },
+        '.index_icon': {
+          display: 'block',
+        },
       },
     },
   },
 }
 
-export const LikedPage = () => { /*  */
+export const LikedPage = observer(() => { /*  */
   const simplebarRef = useContext(SimplebarRefContext).current as SimpleBar
   const [activeRowId, setActiveRowId] = useState<string | null>(null)
+  const $app = useContext(rootContext).app
+  const { nowPlayingMusicId } = $app
+
   const onRowClick = (id: string) => {
     if (activeRowId === id) setActiveRowId(null)
     else setActiveRowId(id)
   }
-  // const scrollEL = simplebarRef.getScrollElement()
-  // // console.log(scrollEL.scrollTop)
+  const onRowDoubleClick = (id: string) => {
+    $app.set(['nowPlayingMusicId', id])
+  }
+
   return (
     <Box>
       <Stack direction="row" alignItems="end" spacing={2} sx={{ pb: 4 }}>
@@ -97,9 +130,7 @@ export const LikedPage = () => { /*  */
         <CardContent {...GridColumnProps}>
           <Box><Typography textAlign="end">#</Typography></Box>
           <Box>
-            <Typography noWrap>Title LongLongLongLongLongLo
-              ngLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLongLong
-            </Typography>
+            <Typography noWrap>Title</Typography>
           </Box>
           <Box><Typography noWrap>Alumb</Typography></Box>
           <Box><Typography noWrap>Create Date</Typography></Box>
@@ -113,31 +144,41 @@ export const LikedPage = () => { /*  */
                 top: GridRowProps.sx.height * 20,
                 bottom: GridRowProps.sx.height * 20,
               }}
-              itemContent={(i) => {
+              itemContent={(i: number) => {
                 const music = list[i]
                 const {
                   id, title, artists, isLiked,
                 } = music
-                return <Box {...GridRowProps} key={i} tabIndex={-1}
-                    className={activeRowId === id ? 'active' : ''} onClick={() => onRowClick(id)}>
-                  <Stack direction="row" alignItems="center" justifyContent="end">
-                    <Box>
-                      <Typography>{ i + 1 }</Typography>
-                    </Box>
-                  </Stack>
-                  <Stack direction="row" alignItems="center" spacing={1}>
-                    <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square">
-                    </Avatar>
-                    <Stack sx={{ minWidth: 0 }}>
-                      <Typography variant="subtitle2" noWrap>
-                        { title }
-                      </Typography>
-                      <Stack direction="row" alignItems="center" spacing={0.2}>
-                        <Avatar sx={{
-                          width: 14, height: 14, fontSize: '12px', mr: 0.5,
-                        }} variant="square">E</Avatar>
-                        <Typography variant="caption" fontSize={10} noWrap>
-                          {
+                return (
+                  <Box {...GridRowProps} key={i} tabIndex={-1}
+                      className={activeRowId === id ? 'active' : ''}
+                      onClick={() => onRowClick(id)}
+                      onDoubleClick={() => onRowDoubleClick(id)}>
+                    <Stack direction="row" alignItems="center" justifyContent="end">
+                      <Box className="index">
+                        {
+                          nowPlayingMusicId !== id
+                            ? <Typography>{ i + 1 }</Typography>
+                            : '?'
+                        }
+                      </Box>
+                      <Icon className="index_icon">
+                        { nowPlayingMusicId !== id ? 'play_arrow' : 'pause' }
+                      </Icon>
+                    </Stack>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square">
+                      </Avatar>
+                      <Stack sx={{ minWidth: 0 }}>
+                        <Typography variant="subtitle2" noWrap>
+                          { title }
+                        </Typography>
+                        <Stack direction="row" alignItems="center" spacing={0.2}>
+                          <Avatar sx={{
+                            width: 14, height: 14, fontSize: '12px', mr: 0.5,
+                          }} variant="square">E</Avatar>
+                          <Typography variant="caption" fontSize={10} noWrap>
+                            {
                             artists.map((e, i2, arr) => (
                               <Fragment key={e}>
                                 <>{ e }</>
@@ -148,25 +189,26 @@ export const LikedPage = () => { /*  */
                               </Fragment>
                             ))
                           }
-                        </Typography>
+                          </Typography>
+                        </Stack>
                       </Stack>
                     </Stack>
-                  </Stack>
-                  <Stack direction="row" alignItems="center">
-                    <Typography noWrap>Let Me Love You (Sean Paul Remix)</Typography>
-                  </Stack>
-                  <Stack direction="row" alignItems="center">
-                    <Typography noWrap>2022/06/06</Typography>
-                  </Stack>
-                  <Stack onClick={() => music.toogle('isLiked')} direction="row" alignItems="center" spacing={1}>
-                    { isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/> }
-                    <Typography>2:45</Typography>
-                    <MoreHorizIcon fontSize="small" className="MoreIcon"/>
-                  </Stack>
-                </Box>
+                    <Stack direction="row" alignItems="center">
+                      <Typography noWrap>
+                        Let Me Love You (Sean Paul Remix)</Typography>
+                    </Stack>
+                    <Stack direction="row" alignItems="center">
+                      <Typography noWrap>2022/06/06</Typography>
+                    </Stack>
+                    <Stack onClick={() => music.toogle('isLiked')} direction="row" alignItems="center" spacing={1}>
+                      { isLiked ? <FavoriteBorderIcon /> : <FavoriteIcon color="secondary"/> }
+                      <Typography>2:45</Typography>
+                      <MoreHorizIcon fontSize="small" className="MoreIcon"/>
+                    </Stack>
+                  </Box>)
               }}/>
         </CardContent>
       </Box>
     </Box>
   )
-}
+})

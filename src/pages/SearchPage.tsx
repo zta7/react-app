@@ -1,3 +1,5 @@
+import { Cover } from 'src/models/Cover'
+import { GenricList } from 'src/models/GenricList'
 import { CoverCard } from '../components/Card/CoverCard'
 import { VerticalCard } from '../components/Card/VerticalCard'
 import { CardContainer } from '../components/Container/CardContainer'

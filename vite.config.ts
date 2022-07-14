@@ -77,7 +77,7 @@ export default defineConfig({
           // ],
         },
       ],
-      dirs: ['./src/models/'],
+      // dirs: ['./src/models/'],
     }),
   ],
   resolve: {

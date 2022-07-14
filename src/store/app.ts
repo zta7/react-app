@@ -11,6 +11,7 @@ type TooglePropKeys = {
 type PropKeys = {
  playingMode: number
  volume: number
+ nowPlayingMusicId: string
 }
 
 const app = types
@@ -19,6 +20,7 @@ const app = types
     isShuffling: false,
     playingMode: 0,
     volume: 0,
+    nowPlayingMusicId: '',
   })
   .actions((self) => ({
     toogle(k: keyof TooglePropKeys) {

@@ -1,3 +1,4 @@
+import { GenricList } from 'src/models/GenricList'
 import { HorizontalCard } from '../components/Card/HorizontalCard'
 import { VerticalCard } from '../components/Card/VerticalCard'
 import { CardContainer } from '../components/Container/CardContainer'
