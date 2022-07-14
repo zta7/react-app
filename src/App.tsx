@@ -1,6 +1,7 @@
 import { createContext } from 'react'
 import SimpleBar from 'simplebar-react'
 import { MusicBar } from './components/Bar/MusicBar'
+// import { BgBox } from './components/Box/BgBox'
 import { LeftDrawer } from './components/LeftDrawer'
 import { UserMenu } from './components/Menu/UserMenu'
 // import { TestReact } from './components/TestReact'
@@ -31,30 +32,34 @@ const App = () => {
         <LeftDrawer />
         <Divider orientation="vertical"/>
       </Stack>
-      <Box className="main" sx={{
-        display: 'flex',
-        flexFlow: 'row nowrap',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        p: 0,
-        boxShadow: 0,
-        zIndex: 9999,
-        position: 'sticky',
-        top: 0,
-        height: headerHeight,
-      }}>
-        <Box>
-          <IconButton disableRipple
-              sx={{ p: 0, mr: 1 }} >
-            <Icon fontSize="large">keyboard_arrow_left</Icon>
-          </IconButton>
-          <IconButton disableRipple
-              sx={{ p: 0 }} >
-            <Icon fontSize="large">keyboard_arrow_right</Icon>
-          </IconButton>
-        </Box>
-        <Box>
-          {/* <TextField
+      <Box className="main relative-position">
+        <Box className="absolute-full" >
+          <SimpleBar style={{ maxHeight: '100%' }} ref={simplebarRef}>
+            <SimplebarRefContext.Provider value={simplebarRef}>
+              <Box sx={{
+                display: 'flex',
+                flexFlow: 'row nowrap',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                p: 0,
+                boxShadow: 0,
+                zIndex: 9999,
+                position: 'sticky',
+                top: 0,
+                height: headerHeight,
+              }}>
+                <Box>
+                  <IconButton disableRipple
+                      sx={{ p: 0, mr: 1 }} >
+                    <Icon fontSize="large">keyboard_arrow_left</Icon>
+                  </IconButton>
+                  <IconButton disableRipple
+                      sx={{ p: 0 }} >
+                    <Icon fontSize="large">keyboard_arrow_right</Icon>
+                  </IconButton>
+                </Box>
+                <Box>
+                  {/* <TextField
               size="small"
               color="primary"
               focused
@@ -67,15 +72,11 @@ const App = () => {
                 ),
               }}
               variant="outlined"/> */}
-        </Box>
-        <Box>
-          <UserMenu />
-        </Box>
-      </Box>
-      <Box className="main relative-position">
-        <Box className="absolute-full" >
-          <SimpleBar style={{ maxHeight: '100%' }} ref={simplebarRef}>
-            <SimplebarRefContext.Provider value={simplebarRef}>
+                </Box>
+                <Box>
+                  <UserMenu />
+                </Box>
+              </Box>
               <Box>
                 {
                   mounted && <Outlet />

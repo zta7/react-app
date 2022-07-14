@@ -80,18 +80,21 @@ export const LeftDrawer = observer(() => {
       <Divider variant="middle"/>
       <Box sx={{ flexGrow: 1, position: 'relative', overflowY: 'auto' }}>
         {
-        list3.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
-          <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
-        </ListItemButton>)
-      }
+          list3.map((item) => (
+            <ListItemButton key={item.id} disableRipple component={item.link}>
+              <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+            </ListItemButton>))
+        }
       </Box>
       {
-        <Slide direction="up" in={!$app.a} appear>
+        <Slide direction="up" in={!$app.a}
+            exit={false}
+            timeout={{ enter: 0, exit: 0 }}
+            unmountOnExit >
           <Box sx={{
             width: '100%',
             aspectRatio: '1/1',
             position: 'relative',
-            transition: 'all .25s ease-in-out',
           }}>
             <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square"
                 sx={{ width: '100%', height: '100%' }}>

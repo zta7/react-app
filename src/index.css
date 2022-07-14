@@ -9,6 +9,7 @@ body {
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 
 code {
@@ -76,7 +77,7 @@ code {
   width: 100vw;
   height: 100vh;
   display: grid;
-  overflow: hidden;
+  /* overflow: hidden; */
   grid-template-columns: auto 1fr;
   grid-template-rows: 1fr auto;
   grid-template-areas:
@@ -90,6 +91,11 @@ code {
 
 .main {
   grid-area: main;
+  min-height: 0;
+  overflow: hidden;
+  position: relative
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .footer {
@@ -113,8 +119,3 @@ code {
   background-color: #e6e4dc;
 }
 
-.contentSpacing {
-  height: 30vh;
-  max-height: 500px;
-  min-height: 340px;
-}
