@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
-// import ElementQueries from 'css-element-queries/src/ElementQueries'
+import CssBaseline from '@mui/material/CssBaseline'
 import App from './App'
 import { EpisodePage } from './pages/EpisodePage'
 import { HomePage } from './pages/HomePage'
@@ -21,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <rootContext.Provider value={rootStore}>
       <BrowserRouter>
+        <CssBaseline />
         <Routes>
           <Route path="/" element={<App />}>
             <Route path="home1" element={<HomePage />} />

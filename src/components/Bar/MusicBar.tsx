@@ -29,10 +29,18 @@ export const MusicBar = observer(({ music }: Props) => {
   const { isPlaying } = music
   const $app = useContext(rootContext).app
   const { isShuffling, playingMode, volume } = $app
-  return <Paper square sx={{ px: 2, height: 'inherit' }}>
+  return <Paper square sx={{ px: 2, height: 'inherit', minWidth: 950 }}>
     <Stack direction="row" alignItems="center" justifyContent="space-between" sx={{ height: 'inherit' }}>
-      <MusicItem music={music}/>
-      <Stack sx={{ flex: 0.5 }} alignItems="center">
+      <Stack direction="row" alignItems="center" justifyContent="start" sx={{
+        minWidth: 180,
+        width: '30%',
+      }}>
+        <MusicItem music={music}/>
+      </Stack>
+      <Stack sx={{
+        maxWidth: 722,
+        width: '40%',
+      }} alignItems="center">
         <Stack direction="row" alignItems="center" spacing={1}>
           <Stack sx={{ position: 'relative' }} color={isShuffling ? 'error.main' : 'text.primary'} alignItems="center">
             <ShuffleIcon onClick={() => $app.toogle('isShuffling')}/>
@@ -62,7 +70,10 @@ export const MusicBar = observer(({ music }: Props) => {
           </Typography>
         </Stack>
       </Stack>
-      <Stack direction="row" alignItems="center" spacing={1}>
+      <Stack direction="row" alignItems="center" justifyContent="end" spacing={1} sx={{
+        minWidth: 180,
+        width: '30%',
+      }}>
         <MicIcon />
         <QueueMusicIcon />
         <CastIcon />

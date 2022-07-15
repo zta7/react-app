@@ -11,18 +11,24 @@ const list = [
   ...Array.from({ length: 500 }, () => new Music()),
 ]
 
+const GridColumnWrapperProps = {
+  sx: {
+    position: 'sticky',
+    zIndex: 9999,
+    top: 64,
+    borderBottom: 1,
+    py: 0,
+  },
+}
+
 const GridColumnProps = {
   sx: {
     display: 'grid',
     gridGap: 16,
     gridTemplateColumns: '[index] 16px [first] 6fr [var1] 4fr [var2] 3fr [last] minmax(120px,1fr)',
-    py: 0,
 
+    px: 2.5,
     height: 36,
-    position: 'sticky',
-    zIndex: 9999,
-    top: 64,
-    borderBottom: 1,
 
     '&': {
       '> *': {
@@ -103,13 +109,13 @@ export const LikedPage = observer(() => { /*  */
 
   return (
     <Box>
-      <Stack direction="row" alignItems="end" spacing={2} sx={{ pb: 4 }}>
+      <Stack direction="row" alignItems="end" spacing={2} component={CardContent}>
         <Box sx={{ width: 232, height: 232, flexShrink: 0 }}>
           <Avatar src="https://t.scdn.co/images/3099b3803ad9496896c43f22fe9be8c4.png" variant="square" sx={{ width: '100%', height: '100%' }}>
             <FavoriteIcon />
           </Avatar>
         </Box>
-        <Stack>
+        <Stack sx={{ minWidth: 0 }}>
           <Typography variant="caption" noWrap>播放清单</Typography>
           <Typography variant="h1" noWrap>已按赞的歌曲</Typography>
           <Stack direction="row" alignItems="center" spacing={1}>
@@ -118,23 +124,25 @@ export const LikedPage = observer(() => { /*  */
           </Stack>
         </Stack>
       </Stack>
-      <Box sx={{ py: 1 }}>
+      <CardContent>
         <PlayArrowIcon sx={{
           bgcolor: 'success.main',
           borderRadius: 12,
           fontSize: 56,
           p: 1.2,
         }}/>
-      </Box>
+      </CardContent>
       <Box>
-        <CardContent {...GridColumnProps}>
-          <Box><Typography textAlign="end">#</Typography></Box>
-          <Box>
-            <Typography noWrap>Title</Typography>
+        <CardContent {...GridColumnWrapperProps}>
+          <Box {...GridColumnProps}>
+            <Box><Typography textAlign="end">#</Typography></Box>
+            <Box>
+              <Typography noWrap>Title</Typography>
+            </Box>
+            <Box><Typography noWrap>Alumb</Typography></Box>
+            <Box><Typography noWrap>Create Date</Typography></Box>
+            <Box><AccessTimeIcon /></Box>
           </Box>
-          <Box><Typography noWrap>Alumb</Typography></Box>
-          <Box><Typography noWrap>Create Date</Typography></Box>
-          <Box><AccessTimeIcon /></Box>
         </CardContent>
         <CardContent sx={{ height: list.length * GridRowProps.sx.height }}>
           <Virtuoso
@@ -159,7 +167,7 @@ export const LikedPage = observer(() => { /*  */
                         {
                           nowPlayingMusicId !== id
                             ? <Typography>{ i + 1 }</Typography>
-                            : '?'
+                            : <ScaleLoader cssOverride={{ display: 'flex' }} speedMultiplier={4} width={2} height={20}/>
                         }
                       </Box>
                       <Icon className="index_icon">
@@ -179,16 +187,16 @@ export const LikedPage = observer(() => { /*  */
                           }} variant="square">E</Avatar>
                           <Typography variant="caption" fontSize={10} noWrap>
                             {
-                            artists.map((e, i2, arr) => (
-                              <Fragment key={e}>
-                                <>{ e }</>
-                                {
-                                  i !== arr.length - 1
-                                  && <>,</>
-                                }
-                              </Fragment>
-                            ))
-                          }
+                              artists.map((e, i2, arr) => (
+                                <Fragment key={e}>
+                                  <>{ e }</>
+                                  {
+                                    i !== arr.length - 1
+                                    && <>,</>
+                                  }
+                                </Fragment>
+                              ))
+                            }
                           </Typography>
                         </Stack>
                       </Stack>

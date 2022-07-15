@@ -27,9 +27,9 @@ const app = types
       self[k] = !self[k]
     },
 
-    set(tuple: [keyof PropKeys, any]) {
+    set(tuple: [keyof PropKeys, string | number]) {
       const [k, v] = tuple
-      self[k] = v
+      if (typeof v === typeof self[k]) self[k] = v
     },
   }))
 

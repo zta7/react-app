@@ -1,5 +1,6 @@
 import { rootContext } from 'src/store'
 import { Music } from 'src/models/Music'
+import { Fragment } from 'react'
 
 interface Props {
   music: Music
@@ -12,7 +13,7 @@ export const MusicItem = observer(({ music }: Props) => {
   const $app = useContext(rootContext).app
   return (
     <Stack direction="row" alignItems="center" spacing={2}
-        sx={{ transform: !$app.a ? 'translateX(-72px)' : 'translateX(0)', transition: 'all .25s ease-in-out' }}>
+        sx={{ transform: !$app.a ? 'translateX(-72px)' : 'translateX(0)', transition: 'all .25s ease-in-out', maxWidth: '100%' }}>
       <Box sx={{ position: 'relative' }} >
         <Icon sx={{
           position: 'absolute', right: 0, top: 0, zIndex: 9999,
@@ -21,7 +22,7 @@ export const MusicItem = observer(({ music }: Props) => {
             sx={{ width: 55, height: 55 }}>
         </Avatar>
       </Box>
-      <Stack>
+      <Stack sx={{ minWidth: 0 }}>
         <Typography variant="subtitle2" noWrap>
           { title }
         </Typography>
@@ -29,18 +30,19 @@ export const MusicItem = observer(({ music }: Props) => {
           <Avatar sx={{
             width: 14, height: 14, fontSize: '12px', mr: 0.5,
           }} variant="square">E</Avatar>
-          {
-          artists.map((e, i, arr) => (
-            <Typography key={e} variant="caption" fontSize={10} noWrap>
-              <span>{ e }</span>
-              {
-                i !== arr.length - 1
-                && <span>,</span>
-              }
-            </Typography>
-          ))
-        }
-
+          <Typography variant="caption" fontSize={10} noWrap>
+            {
+              artists.map((e, i, arr) => (
+                <Fragment key={e}>
+                  <>{ e }</>
+                  {
+                    i !== arr.length - 1
+                    && <>,</>
+                  }
+                </Fragment>
+              ))
+            }
+          </Typography>
         </Stack>
       </Stack>
       <Box onClick={() => music.toogle('isLiked')}>

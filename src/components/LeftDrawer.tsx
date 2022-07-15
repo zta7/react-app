@@ -1,4 +1,5 @@
 import { rootContext } from 'src/store'
+import SimpleBar from 'simplebar-react'
 
 const activeStyle = {
   textDecoration: 'underline',
@@ -37,6 +38,7 @@ const list3 = [
 const listSx = {
   minWidth: 50,
   maxWidth: 200,
+  minHeight: 0,
   p: 0,
   display: 'flex',
   flexFlow: 'column nowrap',
@@ -56,7 +58,7 @@ export const LeftDrawer = observer(() => {
   console.log('LeftDrawer')
 
   return (
-    <List sx={{ ...listSx }} dense>
+    <List sx={{ ...listSx }} dense component={Paper} square>
       <Box>
         {
           list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
@@ -78,13 +80,17 @@ export const LeftDrawer = observer(() => {
         }
       </Box>
       <Divider variant="middle"/>
-      <Box sx={{ flexGrow: 1, position: 'relative', overflowY: 'auto' }}>
-        {
-          list3.map((item) => (
-            <ListItemButton key={item.id} disableRipple component={item.link}>
-              <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
-            </ListItemButton>))
-        }
+      <Box sx={{
+        flexGrow: 1, minHeight: 0, overflow: 'hidden',
+      }}>
+        <SimpleBar style={{ maxHeight: '100%' }}>
+          {
+            list3.map((item) => (
+              <ListItemButton key={item.id} disableRipple component={item.link}>
+                <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+              </ListItemButton>))
+          }
+        </SimpleBar>
       </Box>
       {
         <Slide direction="up" in={!$app.a}
