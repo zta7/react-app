@@ -1,11 +1,12 @@
 import { createContext } from 'react'
 import SimpleBar from 'simplebar-react'
-import { createTheme, ThemeProvider } from '@mui/material'
+// import { createTheme, ThemeProvider } from '@mui/material'
 import { MusicBar } from './components/Bar/MusicBar'
 // import { BgBox } from './components/Box/BgBox'
 import { LeftDrawer } from './components/LeftDrawer'
 import { UserMenu } from './components/Menu/UserMenu'
 import { Music } from './models/Music'
+import { MuiThemeProvider } from './theme'
 // import { TestReact } from './components/TestReact'
 
 const music = new Music()
@@ -27,19 +28,17 @@ const App = () => {
   }, [location])
 
   const headerHeight = 64
-  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)')
-  const theme = useMemo(
-    () => createTheme({
-      palette: {
-        mode: prefersDarkMode ? 'dark' : 'light',
-      },
-    }),
-    [prefersDarkMode],
-  )
+  // const theme = useMemo(
+  //   () => createTheme({
+  //     palette: {
+  //       mode: 'dark',
+  //     },
+  //   }),
+  //   [],
+  // )
 
   return (
-    <ThemeProvider theme={theme}>
-
+    <MuiThemeProvider>
       <Box className="app">
         <Stack className="navbar" direction="row" sx={{ minHeight: 0 }}>
           <LeftDrawer />
@@ -96,7 +95,7 @@ const App = () => {
           <MusicBar music={music} />
         </Box>
       </Box>
-    </ThemeProvider>
+    </MuiThemeProvider>
   )
 }
 

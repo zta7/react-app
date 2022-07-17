@@ -5,7 +5,6 @@ import { SimplebarRefContext } from 'src/App'
 import SimpleBar from 'simplebar-react'
 import { Music } from 'src/models/Music'
 import { rootContext } from 'src/store'
-import { ScaleLoader } from 'react-spinners'
 
 const list = [
   ...Array.from({ length: 500 }, () => new Music()),
@@ -167,7 +166,7 @@ export const LikedPage = observer(() => { /*  */
                         {
                           nowPlayingMusicId !== id
                             ? <Typography>{ i + 1 }</Typography>
-                            : <ScaleLoader cssOverride={{ display: 'flex' }} speedMultiplier={4} width={2} height={20}/>
+                            : '...'
                         }
                       </Box>
                       <Icon className="index_icon">

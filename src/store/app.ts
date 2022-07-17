@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 /* eslint-disable no-param-reassign */
 import {
   types,
@@ -27,9 +26,11 @@ const app = types
       self[k] = !self[k]
     },
 
-    set(tuple: [keyof PropKeys, string | number]) {
+    set(tuple: [keyof PropKeys, number | string]) {
       const [k, v] = tuple
-      if (typeof v === typeof self[k]) self[k] = v
+      Object.assign(self, {
+        [k]: v,
+      })
     },
   }))
 
