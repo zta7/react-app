@@ -5,6 +5,7 @@ import { SimplebarRefContext } from 'src/App'
 import SimpleBar from 'simplebar-react'
 import { Music } from 'src/models/Music'
 import { rootContext } from 'src/store'
+import { useInView } from 'react-intersection-observer'
 
 const list = [
   ...Array.from({ length: 500 }, () => new Music()),
@@ -98,6 +99,11 @@ export const LikedPage = observer(() => { /*  */
   const $app = useContext(rootContext).app
   const { nowPlayingMusicId } = $app
 
+  const { ref, inView, entry } = useInView({
+    /* Optional options */
+    threshold: 0,
+  })
+
   const onRowClick = (id: string) => {
     if (activeRowId === id) setActiveRowId(null)
     else setActiveRowId(id)
@@ -124,12 +130,14 @@ export const LikedPage = observer(() => { /*  */
         </Stack>
       </Stack>
       <CardContent>
-        <PlayArrowIcon sx={{
-          bgcolor: 'success.main',
-          borderRadius: 12,
-          fontSize: 56,
-          p: 1.2,
-        }}/>
+        <div ref={ref}>
+          <PlayArrowIcon sx={{
+            bgcolor: 'success.main',
+            borderRadius: 12,
+            fontSize: 56,
+            p: 1.2,
+          }}/>
+        </div>
       </CardContent>
       <Box>
         <CardContent {...GridColumnWrapperProps}>
@@ -143,6 +151,7 @@ export const LikedPage = observer(() => { /*  */
             <Box><AccessTimeIcon /></Box>
           </Box>
         </CardContent>
+        { inView ? '1' : '2' }
         <CardContent sx={{ height: list.length * GridRowProps.sx.height }}>
           <Virtuoso
               customScrollParent={simplebarRef.getScrollElement() as HTMLElement}

@@ -9,7 +9,7 @@ export const MuiThemeProvider: FC<Props> = ({ children }) => {
   const theme = useMemo(
     () => createTheme({
       palette: {
-        mode: 'dark',
+        mode: 'light',
       },
     }),
     [],
