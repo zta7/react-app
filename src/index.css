@@ -17,6 +17,10 @@ code {
     monospace;
 }
 
+.no-pointer-events {
+  pointer-events: none;
+}
+
 .relative-position {
   position: relative;
 }

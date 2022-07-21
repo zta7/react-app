@@ -42,6 +42,7 @@ const listSx = {
   p: 0,
   display: 'flex',
   flexFlow: 'column nowrap',
+  height: '100%',
 }
 
 const textSx = {
@@ -55,21 +56,21 @@ const textSx = {
 
 export const LeftDrawer = observer(() => {
   const $app = useContext(rootContext).app
-  console.log('LeftDrawer')
 
   return (
-    <List sx={{ ...listSx }} dense component={Paper} square>
-      <Box>
-        {
-          list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
-            <ListItemIcon sx={{ minWidth: 40 }}>
-              { item.icon }
-            </ListItemIcon>
-            <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
-          </ListItemButton>)
-        }
-        <Box sx={{ height: 20 }}></Box>
-        {
+    <Box sx={{ position: 'relative' }}>
+      <List sx={{ ...listSx }} dense>
+        <Box>
+          {
+            list1.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
+              <ListItemIcon sx={{ minWidth: 40 }}>
+                { item.icon }
+              </ListItemIcon>
+              <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
+            </ListItemButton>)
+          }
+          <Box sx={{ height: 20 }}></Box>
+          {
           list2.map((item) => <ListItemButton key={item.id} disableRipple component={item.link}>
             <ListItemIcon sx={{ minWidth: 40 }}>
               { item.icon }
@@ -78,39 +79,40 @@ export const LeftDrawer = observer(() => {
             {/* <DownloadingIcon sx={{ fontSize: 16 }}/> */}
           </ListItemButton>)
         }
-      </Box>
-      <Divider variant="middle"/>
-      <Box sx={{
-        flexGrow: 1, minHeight: 0, overflow: 'hidden',
-      }}>
-        <SimpleBar style={{ maxHeight: '100%' }}>
-          {
+        </Box>
+        <Divider variant="middle"/>
+        <Box sx={{
+          flexGrow: 1, minHeight: 0, overflow: 'hidden',
+        }}>
+          <SimpleBar style={{ maxHeight: '100%' }}>
+            {
             list3.map((item) => (
               <ListItemButton key={item.id} disableRipple component={item.link}>
                 <ListItemText primary={item.label} primaryTypographyProps={{ ...textSx }} />
               </ListItemButton>))
           }
-        </SimpleBar>
-      </Box>
-      {
-        <Slide direction="up" in={!$app.a}
-            exit={false}
-            timeout={{ enter: 0, exit: 0 }}
-            unmountOnExit >
-          <Box sx={{
-            width: '100%',
-            aspectRatio: '1/1',
-            position: 'relative',
-          }}>
-            <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square"
-                sx={{ width: '100%', height: '100%' }}>
-            </Avatar>
-            <Icon sx={{
-              position: 'absolute', right: 0, top: 0, zIndex: 9999,
-            }} className="hvr-grow" onClick={() => $app.toogle('a')}>expand_more</Icon>
-          </Box>
-        </Slide>
+          </SimpleBar>
+        </Box>
+        {
+          <Slide direction="up" in={!$app.a}
+              exit={false}
+              timeout={{ enter: 0, exit: 0 }}
+              unmountOnExit >
+            <Box sx={{
+              width: '100%',
+              aspectRatio: '1/1',
+              position: 'relative',
+            }}>
+              <Avatar src="http://zephoria.com/wp-content/uploads/2014/08/online-community.jpg" variant="square"
+                  sx={{ width: '100%', height: '100%' }}>
+              </Avatar>
+              <Icon sx={{
+                position: 'absolute', right: 0, top: 0, zIndex: 9999,
+              }} className="hvr-grow" onClick={() => $app.toogle('a')}>expand_more</Icon>
+            </Box>
+          </Slide>
       }
-    </List>
+      </List>
+    </Box>
   )
 })

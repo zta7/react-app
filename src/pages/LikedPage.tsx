@@ -1,7 +1,7 @@
 // import { useVirtualizer } from '@tanstack/react-virtual'
 import React, { Fragment } from 'react'
 import { Virtuoso } from 'react-virtuoso'
-import { SimplebarRefContext } from 'src/App'
+import { SimplebarRefContext } from 'src/layouts/app/body'
 import SimpleBar from 'simplebar-react'
 import { Music } from 'src/models/Music'
 import { rootContext } from 'src/store'
@@ -100,8 +100,7 @@ export const LikedPage = observer(() => { /*  */
   const { nowPlayingMusicId } = $app
 
   const { ref, inView, entry } = useInView({
-    /* Optional options */
-    threshold: 0,
+    threshold: 1,
   })
 
   const onRowClick = (id: string) => {
@@ -151,7 +150,6 @@ export const LikedPage = observer(() => { /*  */
             <Box><AccessTimeIcon /></Box>
           </Box>
         </CardContent>
-        { inView ? '1' : '2' }
         <CardContent sx={{ height: list.length * GridRowProps.sx.height }}>
           <Virtuoso
               customScrollParent={simplebarRef.getScrollElement() as HTMLElement}
